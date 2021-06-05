@@ -1,0 +1,1 @@
+# app-rrhh-core
