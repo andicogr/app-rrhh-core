@@ -31,7 +31,7 @@ public class CompanyEntity extends AuditEntity {
     @Column(length = 200)
     private String address;
 
-    @Column(length = 15)
+    @Column(length = 20)
     private String phone;
 
     @Column(length = 64)

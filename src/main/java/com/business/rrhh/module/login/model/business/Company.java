@@ -9,10 +9,5 @@ public class Company {
 
     private Integer id;
     private String brandName;
-    private String ruc;
-    private String status;
-    private String email;
-    private String address;
-    private String phone;
 
 }

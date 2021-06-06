@@ -42,4 +42,10 @@ public class UserService {
         return userDao.save(currentUser);
 
     }
+
+    public void deleteById(Integer id) {
+
+        userDao.deleteById(id);
+
+    }
 }

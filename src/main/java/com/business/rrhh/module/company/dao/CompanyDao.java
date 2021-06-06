@@ -2,7 +2,8 @@ package com.business.rrhh.module.company.dao;
 
 import com.business.rrhh.module.company.dao.mapper.CompanyMapper;
 import com.business.rrhh.module.company.dao.repository.CompanyRepository;
-import com.business.rrhh.module.login.model.business.Company;
+import com.business.rrhh.module.company.error.CompanyException;
+import com.business.rrhh.module.company.model.business.Company;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -27,6 +28,36 @@ public class CompanyDao {
 
         return repository.findAll(Example.of(CompanyMapper.mapToEntity(company), matcher), pageable)
                 .map(CompanyMapper::mapToBusiness);
+
+    }
+
+    public Company getById(Integer id) {
+
+        return repository.findById(id)
+                .map(CompanyMapper::mapToBusiness)
+                .orElseThrow(() -> CompanyException.COMPANY_NOT_FOUND.build());
+
+    }
+
+    public Company save(Company company) {
+
+        return CompanyMapper.mapToBusiness(repository.save(CompanyMapper.mapToEntity(company)));
+
+    }
+
+    public Company update(Company updatedCompany) {
+
+        return CompanyMapper.mapToBusiness(repository.save(CompanyMapper.mapToEntity(updatedCompany)));
+
+    }
+
+    public void deleteById(Integer id) {
+
+        if (repository.existsById(id)) {
+
+            repository.deleteById(id);
+
+        }
 
     }
 }

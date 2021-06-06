@@ -1,12 +1,14 @@
 package com.business.rrhh.module.login.dao;
 
 import com.business.rrhh.module.login.dao.mapper.UserMapper;
-import com.business.rrhh.module.login.error.LoginException;
-import com.business.rrhh.util.api.PageSearch;
 import com.business.rrhh.module.login.dao.repository.UserRepository;
+import com.business.rrhh.module.login.error.LoginException;
 import com.business.rrhh.module.login.model.business.User;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
@@ -42,4 +44,13 @@ public class UserDao {
 
     }
 
+    public void deleteById(Integer id) {
+
+        if (repository.existsById(id)) {
+
+            repository.deleteById(id);
+
+        }
+
+    }
 }

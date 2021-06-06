@@ -1,7 +1,7 @@
 package com.business.rrhh.module.company.dao.mapper;
 
 import com.business.rrhh.module.company.model.database.CompanyEntity;
-import com.business.rrhh.module.login.model.business.Company;
+import com.business.rrhh.module.company.model.business.Company;
 
 public class CompanyMapper {
 

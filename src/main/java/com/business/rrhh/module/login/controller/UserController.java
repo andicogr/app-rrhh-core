@@ -5,6 +5,7 @@ import com.business.rrhh.module.login.model.api.*;
 import com.business.rrhh.module.login.service.UserService;
 import com.business.rrhh.util.PageResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,7 @@ public class UserController {
 
     @PostMapping
     @ResponseBody
-    public UserResponse create(@RequestBody UserRequest userRequest){
+    public UserResponse create(@RequestBody @Valid UserRequest userRequest){
 
         return UserMapper.mapToResponse(userService.save(UserMapper.mapToUser(userRequest)));
 
@@ -46,9 +47,18 @@ public class UserController {
 
     @ResponseBody
     @PatchMapping(value = "/{id}")
-    public UserResponse update(@PathVariable Integer id, @RequestBody UserUpdateRequest userUpdateRequest) {
+    public UserResponse update(@PathVariable Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) {
 
         return UserMapper.mapToResponse(userService.updateById(UserMapper.mapToUser(id, userUpdateRequest)));
+
+    }
+
+    @ResponseBody
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+
+        userService.deleteById(id);
 
     }
 
