@@ -3,8 +3,12 @@ package com.business.rrhh.config;
 import com.business.rrhh.util.ApiException;
 import com.business.rrhh.util.ExceptionDetail;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,13 +17,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @Slf4j
 @ControllerAdvice
-public class CustomControllerAdvice extends ResponseEntityExceptionHandler {
+public class CustomControllerAdvice {
 
     @ResponseBody
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<ExceptionDetail> handleApiException(ApiException ex, WebRequest webRequest) {
 
-        log.error(ex.toString());
+        log.error(ex.toString(), ex);
 
         ExceptionDetail exceptionDetail = new ExceptionDetail();
         exceptionDetail.setCode(ex.getCode());
@@ -32,13 +36,19 @@ public class CustomControllerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionDetail> handleAllException(Exception ex, WebRequest webRequest) {
 
-        log.error(ex.toString());
+        log.error("Error:", ex);
+
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+
+        if (ex instanceof BindException) {
+            status = HttpStatus.BAD_REQUEST;
+        }
 
         ExceptionDetail exceptionDetail = new ExceptionDetail();
         exceptionDetail.setCode("ERROR-9999");
         exceptionDetail.setDescription("Ocurrio un error en el servicio");
 
-        return new ResponseEntity<>(exceptionDetail, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(exceptionDetail, status);
     }
 
 }

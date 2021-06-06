@@ -2,9 +2,9 @@ package com.business.rrhh.module.login.service;
 
 import com.business.rrhh.module.login.dao.UserDao;
 import com.business.rrhh.module.login.model.business.User;
-import com.business.rrhh.util.api.PageSearch;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -15,7 +15,7 @@ public class UserService {
 
     private UserDao userDao;
 
-    public Page<User> getUsers(User userSearch, PageSearch page) {
+    public Page<User> getUsers(User userSearch, Pageable page) {
 
         return userDao.getUsers(userSearch, page);
 

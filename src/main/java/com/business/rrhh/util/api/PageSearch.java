@@ -4,15 +4,17 @@ import lombok.Data;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Data
 public class PageSearch {
+
+    private static final String REGEX_GET_ORDER_AND_PARAMETER = "[\\(\\)]";
 
     @NotNull
     @Min(value = 1)
@@ -22,8 +24,7 @@ public class PageSearch {
     @Min(value = 1)
     private Integer size;
 
-    @Valid
-    private List<SortSearch> sort;
+    private String[] sort;
 
     public PageRequest buildPageable() {
 
@@ -31,15 +32,22 @@ public class PageSearch {
 
         if (Objects.nonNull(this.sort)) {
 
-            sort = Sort.by(
-                    this.sort.stream()
-                            .map(SortSearch::toOrder)
-                            .collect(Collectors.toList())
-            );
+            List<Sort.Order> orders = Arrays.asList(this.sort)
+                    .stream()
+                    .map(this::buildOrder)
+                    .collect(Collectors.toList());
 
+            sort = Sort.by(orders);
         }
 
         return PageRequest.of(this.page - 1, this.size, sort);
+    }
+
+    private Sort.Order buildOrder(String sortOrder) {
+
+        String[] split = sortOrder.split(REGEX_GET_ORDER_AND_PARAMETER);
+
+        return new Sort.Order(Sort.Direction.valueOf(split[0].toUpperCase()), split[1]);
 
     }
 

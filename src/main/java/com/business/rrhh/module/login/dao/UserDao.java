@@ -17,13 +17,13 @@ public class UserDao {
 
     private UserRepository repository;
 
-    public Page<User> getUsers(User user, PageSearch pageSearch) {
+    public Page<User> getUsers(User user, Pageable pageable) {
 
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()
                 .withMatcher("username", contains().ignoreCase());
 
-        return repository.findAll(Example.of(UserMapper.mapToEntity(user), matcher), pageSearch.buildPageable())
+        return repository.findAll(Example.of(UserMapper.mapToEntity(user), matcher), pageable)
                 .map(UserMapper::mapToBusiness);
 
     }

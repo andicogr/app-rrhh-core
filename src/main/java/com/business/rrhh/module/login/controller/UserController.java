@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/users")
@@ -17,10 +19,10 @@ public class UserController {
 
     @GetMapping
     @ResponseBody
-    public PageResponse<UserSearchResponse> getAll(@RequestBody UserSearchRequest userSearchRequest) {
+    public PageResponse<UserSearchResponse> getAll(@Valid UserSearchRequest userSearchRequest) {
 
         return PageResponse.of(
-                userService.getUsers(UserMapper.mapToUser(userSearchRequest), userSearchRequest.getPage())
+                userService.getUsers(UserMapper.mapToUser(userSearchRequest), userSearchRequest.buildPageable())
                         .map(UserMapper::mapToResponseSearch)
         );
 

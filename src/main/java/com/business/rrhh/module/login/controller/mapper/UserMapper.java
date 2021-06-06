@@ -46,9 +46,9 @@ public class UserMapper {
 
         Company company = null;
 
-        if (Objects.nonNull(userSearchRequest.getCompany())) {
+        if (Objects.nonNull(userSearchRequest.getCompanyId())) {
             company = Company.builder()
-                    .id(userSearchRequest.getCompany().getId())
+                    .id(userSearchRequest.getCompanyId())
                     .build();
         }
 
