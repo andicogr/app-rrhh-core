@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /rrhh
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rrhh
+    username: rrhh
+    password: rrhh
