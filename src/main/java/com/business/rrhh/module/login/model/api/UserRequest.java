@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 public class UserRequest {
@@ -20,6 +21,6 @@ public class UserRequest {
 
     @Valid
     @NotNull
-    private CompanyRequest company;
+    private List<CompanyRequest> companies;
 
 }

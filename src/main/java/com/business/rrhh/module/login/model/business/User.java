@@ -3,6 +3,8 @@ package com.business.rrhh.module.login.model.business;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class User {
@@ -15,6 +17,6 @@ public class User {
 
     private String status;
 
-    private Company company;
+    private List<Company> companies;
 
 }

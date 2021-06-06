@@ -4,5 +4,9 @@ INSERT INTO public.company(
 			'Andres Gonzales S.A.C', 'agonzalesr93@gmail.com', '+51 956 291 034', '10476240307', 'ACTIVE');
 
 INSERT INTO public.users(
-	id, created, created_by, modified, modified_by, password, status, username, company_id)
-	VALUES (1, now(), 'admin', null, null, 'admin', 'ACTIVE', 'admin', 1);
+	id, created, created_by, modified, modified_by, password, status, username)
+	VALUES (1, now(), 'admin', null, null, 'admin', 'ACTIVE', 'admin');
+
+INSERT INTO public.user_company(
+	user_id, company_id)
+	VALUES (1, 1);

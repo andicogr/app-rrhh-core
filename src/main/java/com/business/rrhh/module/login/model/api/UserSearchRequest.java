@@ -10,6 +10,6 @@ public class UserSearchRequest extends PageSearch {
 
     private String status;
 
-    private Integer companyId;
+    private Integer[] companyIds;
 
 }

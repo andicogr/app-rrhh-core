@@ -1,19 +1,20 @@
 package com.business.rrhh.module.login.model.database;
 
 import com.business.rrhh.module.company.model.database.CompanyEntity;
-import com.business.rrhh.util.database.BaseCompanyEntity;
+import com.business.rrhh.util.database.AuditEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class UserEntity extends BaseCompanyEntity {
+public class UserEntity extends AuditEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,16 +30,29 @@ public class UserEntity extends BaseCompanyEntity {
     @Column(length = 20, nullable = false)
     private String status;
 
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name = "user_company",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "company_id")}
+    )
+    private Set<CompanyEntity> companies;
+
     @Builder
-    public UserEntity(CompanyEntity company, Integer id, String username, String password, String status) {
-        super(company);
+    public UserEntity(Integer id, String username, String password, String status, Set<CompanyEntity> companies) {
+        super();
         this.id = id;
         this.username = username;
         this.password = password;
         this.status = status;
+        this.companies = companies;
     }
 
     public UserEntity() {
-        super(null);
+        super();
     }
+
 }

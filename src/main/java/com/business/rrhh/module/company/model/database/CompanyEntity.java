@@ -1,5 +1,6 @@
 package com.business.rrhh.module.company.model.database;
 
+import com.business.rrhh.module.login.model.database.UserEntity;
 import com.business.rrhh.util.database.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -38,5 +40,8 @@ public class CompanyEntity extends AuditEntity {
     private String email;
 
     private String status;
+
+    @ManyToMany(mappedBy = "companies")
+    private Set<UserEntity> users;
 
 }

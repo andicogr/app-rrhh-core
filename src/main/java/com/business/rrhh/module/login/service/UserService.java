@@ -2,12 +2,11 @@ package com.business.rrhh.module.login.service;
 
 import com.business.rrhh.module.login.dao.UserDao;
 import com.business.rrhh.module.login.model.business.User;
+import com.business.rrhh.util.UpdateObjects;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -35,9 +34,9 @@ public class UserService {
     public User updateById(User user) {
 
         User currentUser = userDao.getById(user.getId());
-        currentUser.setPassword(Objects.requireNonNullElse(user.getPassword(), currentUser.getPassword()));
-        currentUser.setStatus(Objects.requireNonNullElse(user.getStatus(), currentUser.getStatus()));
-        currentUser.setCompany(Objects.requireNonNullElse(user.getCompany(), currentUser.getCompany()));
+        currentUser.setPassword(UpdateObjects.requireNonNullElse(user.getPassword(), currentUser.getPassword()));
+        currentUser.setStatus(UpdateObjects.requireNonNullElse(user.getStatus(), currentUser.getStatus()));
+        currentUser.setCompanies(UpdateObjects.requireNonNullElse(user.getCompanies(), currentUser.getCompanies()));
 
         return userDao.save(currentUser);
 
