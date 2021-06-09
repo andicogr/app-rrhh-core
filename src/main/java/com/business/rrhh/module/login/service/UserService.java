@@ -1,6 +1,7 @@
 package com.business.rrhh.module.login.service;
 
 import com.business.rrhh.module.login.dao.UserDao;
+import com.business.rrhh.module.login.error.LoginException;
 import com.business.rrhh.module.login.model.business.User;
 import com.business.rrhh.util.UpdateObjects;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,11 @@ public class UserService {
     }
 
     public User save(User user) {
+
+        if (userDao.isUsernameAlreadyInUse(user.getUsername())) {
+            String detail = "El nombre de usuario ya existe";
+            throw LoginException.INVALID_USER_CREATION.build(detail);
+        }
 
         return userDao.save(user);
 

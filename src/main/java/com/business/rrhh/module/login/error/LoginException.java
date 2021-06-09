@@ -3,13 +3,14 @@ package com.business.rrhh.module.login.error;
 import com.business.rrhh.util.ApiException;
 import org.springframework.http.HttpStatus;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum LoginException {
 
     BAD_CREDENTIALS("0001", "Usuario y/o contraseña incorrectos", HttpStatus.BAD_REQUEST),
-    USER_NOT_FOUND("0002", "No se encontró el usuario", HttpStatus.NOT_FOUND);
-
+    USER_NOT_FOUND("0002", "No se encontró el usuario", HttpStatus.NOT_FOUND),
+    INVALID_USER_CREATION("0003","Datos invalidos", HttpStatus.NOT_FOUND);
 
     private String code;
     private String description;
@@ -28,12 +29,12 @@ public enum LoginException {
 
     }
 
-    public ApiException build(List<String> detail){
+    public ApiException build(String... details){
         return ApiException.builder()
                 .code(this.code)
                 .description(this.description)
                 .status(this.status)
-                .details(detail)
+                .details(Arrays.asList(details))
                 .build();
     }
 

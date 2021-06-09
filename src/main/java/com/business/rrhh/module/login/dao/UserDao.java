@@ -74,4 +74,10 @@ public class UserDao {
 
     }
 
+    public boolean isUsernameAlreadyInUse(String username){
+
+        return repository.existsByUsername(username);
+
+    }
+
 }

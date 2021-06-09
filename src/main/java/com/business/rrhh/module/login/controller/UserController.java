@@ -54,17 +54,19 @@ public class UserController {
 
     @PostMapping
     @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
     public UserResponse create(@RequestBody @Valid UserRequest userRequest){
 
-        return UserMapper.mapToResponse(userService.save(UserMapper.mapToUser(userRequest)));
+        return UserMapper.mapToIdResponse(userService.save(UserMapper.mapToUser(userRequest)));
 
     }
 
     @ResponseBody
     @PatchMapping(value = "/{id}")
-    public UserResponse update(@PathVariable Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) {
 
-        return UserMapper.mapToResponse(userService.updateById(UserMapper.mapToUser(id, userUpdateRequest)));
+        userService.updateById(UserMapper.mapToUser(id, userUpdateRequest));
 
     }
 

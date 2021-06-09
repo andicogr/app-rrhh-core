@@ -107,6 +107,16 @@ public class UserMapper {
 
     }
 
+    public static UserResponse mapToIdResponse(User user) {
+
+        UserResponse userResponse = new UserResponse();
+
+        userResponse.setId(user.getId());
+
+        return userResponse;
+
+    }
+
     public static UserSearchResponse mapToResponseSearch(User user) {
 
         UserSearchResponse response = new UserSearchResponse();
