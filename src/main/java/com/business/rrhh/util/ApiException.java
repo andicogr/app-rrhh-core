@@ -13,10 +13,10 @@ public class ApiException extends RuntimeException {
     private String code;
     private String description;
     private HttpStatus status;
-    private List<ApiExceptionDetail> details;
+    private List<String> details;
 
     @Builder
-    public ApiException(String code, String description, HttpStatus status, List<ApiExceptionDetail> details) {
+    public ApiException(String code, String description, HttpStatus status, List<String> details) {
         this.code = code;
         this.description = description;
 
@@ -28,10 +28,4 @@ public class ApiException extends RuntimeException {
         this.details = details;
     }
 
-    @Data
-    @Builder
-    public static class ApiExceptionDetail {
-        private String code;
-        private String message;
-    }
 }

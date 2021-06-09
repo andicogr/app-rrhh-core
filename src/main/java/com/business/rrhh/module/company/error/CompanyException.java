@@ -3,6 +3,8 @@ package com.business.rrhh.module.company.error;
 import com.business.rrhh.util.ApiException;
 import org.springframework.http.HttpStatus;
 
+import java.util.List;
+
 public enum CompanyException {
 
     COMPANY_NOT_FOUND("0001", "No se encontró la compañia",HttpStatus.NOT_FOUND);
@@ -20,12 +22,17 @@ public enum CompanyException {
 
     public ApiException build(){
 
+        return this.build(null);
+
+    }
+
+    public ApiException build(List<String> detail){
         return ApiException.builder()
                 .code(this.code)
                 .description(this.description)
                 .status(this.status)
+                .details(detail)
                 .build();
-
     }
 
 }

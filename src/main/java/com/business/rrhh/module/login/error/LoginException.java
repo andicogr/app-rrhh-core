@@ -3,6 +3,8 @@ package com.business.rrhh.module.login.error;
 import com.business.rrhh.util.ApiException;
 import org.springframework.http.HttpStatus;
 
+import java.util.List;
+
 public enum LoginException {
 
     BAD_CREDENTIALS("0001", "Usuario y/o contraseña incorrectos", HttpStatus.BAD_REQUEST),
@@ -22,12 +24,17 @@ public enum LoginException {
 
     public ApiException build(){
 
+        return this.build(null);
+
+    }
+
+    public ApiException build(List<String> detail){
         return ApiException.builder()
                 .code(this.code)
                 .description(this.description)
                 .status(this.status)
+                .details(detail)
                 .build();
-
     }
 
 }
