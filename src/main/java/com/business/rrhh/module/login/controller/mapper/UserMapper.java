@@ -73,6 +73,15 @@ public class UserMapper {
 
     }
 
+    public static User mapToUser(LoginRequest loginRequest) {
+
+        return User.builder()
+                .username(loginRequest.getUsername())
+                .password(loginRequest.getPassword())
+                .build();
+
+    }
+
     public static UserResponse mapToResponse(User user) {
 
         UserResponse userResponse = new UserResponse();

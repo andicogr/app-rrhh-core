@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
@@ -63,6 +64,13 @@ public class UserDao {
             repository.deleteById(id);
 
         }
+
+    }
+
+    public Optional<User> getByUsernameAndPassword(String username, String password) {
+
+        return repository.findByUsernameAndPassword(username, password)
+                .map(UserMapper::mapToBusiness);
 
     }
 

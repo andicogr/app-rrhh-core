@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 
 public enum LoginException {
 
-    USER_NOT_FOUND("0001", "No se encontró el usuario", HttpStatus.NOT_FOUND);
+    BAD_CREDENTIALS("0001", "Usuario y/o contraseña incorrectos", HttpStatus.BAD_REQUEST),
+    USER_NOT_FOUND("0002", "No se encontró el usuario", HttpStatus.NOT_FOUND);
+
 
     private String code;
     private String description;
