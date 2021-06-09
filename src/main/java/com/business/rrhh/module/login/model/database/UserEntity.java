@@ -30,10 +30,7 @@ public class UserEntity extends AuditEntity {
     @Column(length = 20, nullable = false)
     private String status;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany
     @JoinTable(
             name = "user_company",
             joinColumns = {@JoinColumn(name = "user_id")},
