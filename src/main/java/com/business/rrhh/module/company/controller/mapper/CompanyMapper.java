@@ -5,7 +5,7 @@ import com.business.rrhh.module.company.model.business.Company;
 
 public class CompanyMapper {
 
-    public static Company mapToCompany(CompanySearchRequest companySearchRequest) {
+    public static Company mapToCompany(CompanyByPageSearchRequest companySearchRequest) {
 
         return Company.builder()
                 .brandName(companySearchRequest.getBrandName())

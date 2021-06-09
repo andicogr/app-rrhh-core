@@ -8,15 +8,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserService {
 
     private UserDao userDao;
 
-    public Page<User> getUsers(User userSearch, Pageable page) {
+    public Page<User> getByPage(User userSearch, Pageable page) {
 
-        return userDao.getUsers(userSearch, page);
+        return userDao.getByPage(userSearch, page);
+
+    }
+
+    public List<User> getAll(User user) {
+
+        return userDao.getAll(user);
 
     }
 
@@ -47,4 +55,5 @@ public class UserService {
         userDao.deleteById(id);
 
     }
+
 }

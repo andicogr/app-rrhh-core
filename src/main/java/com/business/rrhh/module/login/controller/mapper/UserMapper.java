@@ -53,7 +53,7 @@ public class UserMapper {
 
     }
 
-    public static User mapToUser(UserSearchRequest userSearchRequest) {
+    public static User mapToUser(UserByPageSearchRequest userSearchRequest) {
 
         List<Company> companies = null;
 

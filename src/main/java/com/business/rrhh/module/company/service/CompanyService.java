@@ -8,7 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.DoubleStream;
 
 @Service
 @AllArgsConstructor
@@ -16,9 +18,15 @@ public class CompanyService {
 
     private CompanyDao companyDao;
 
-    public Page<Company> getAll(Company company, Pageable pageable) {
+    public Page<Company> getByPage(Company company, Pageable pageable) {
 
-        return companyDao.getAll(company, pageable);
+        return companyDao.getByPage(company, pageable);
+
+    }
+
+    public List<Company> getAll(Company company) {
+
+        return companyDao.getAll(company);
 
     }
 
@@ -55,4 +63,5 @@ public class CompanyService {
         companyDao.deleteById(id);
 
     }
+
 }

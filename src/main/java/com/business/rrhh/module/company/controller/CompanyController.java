@@ -2,6 +2,7 @@ package com.business.rrhh.module.company.controller;
 
 import com.business.rrhh.module.company.controller.mapper.CompanyMapper;
 import com.business.rrhh.module.company.model.api.*;
+import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.service.CompanyService;
 import com.business.rrhh.util.PageResponse;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
@@ -18,14 +21,26 @@ public class CompanyController {
 
     private CompanyService companyService;
 
-    @GetMapping
     @ResponseBody
-    public PageResponse<CompanyResponseSearch> getAll(@Valid CompanySearchRequest companySearchRequest) {
+    @GetMapping(params = {"page"})
+    public PageResponse<CompanyResponseSearch> getByPage(@Valid CompanyByPageSearchRequest companySearchRequest) {
 
         return PageResponse.of(
-                companyService.getAll(CompanyMapper.mapToCompany(companySearchRequest), companySearchRequest.buildPageable())
+                companyService.getByPage(CompanyMapper.mapToCompany(companySearchRequest), companySearchRequest.buildPageable())
                         .map(CompanyMapper::mapToResponseSearch)
         );
+
+    }
+
+    @GetMapping
+    @ResponseBody
+    public List<CompanyResponseSearch> getAll(String status) {
+
+        Company company = Company.builder().status(status).build();
+
+        return companyService.getAll(company).stream()
+                .map(CompanyMapper::mapToResponseSearch)
+                .collect(Collectors.toList());
 
     }
 

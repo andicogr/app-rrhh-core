@@ -11,6 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
 @Repository
@@ -19,7 +22,7 @@ public class UserDao {
 
     private UserRepository repository;
 
-    public Page<User> getUsers(User user, Pageable pageable) {
+    public Page<User> getByPage(User user, Pageable pageable) {
 
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()
@@ -27,6 +30,15 @@ public class UserDao {
 
         return repository.findAll(Example.of(UserMapper.mapToEntity(user), matcher), pageable)
                 .map(UserMapper::mapToBusiness);
+
+    }
+
+    public List<User> getAll(User user) {
+
+        return repository.findAll(Example.of(UserMapper.mapToEntity(user)))
+                .stream()
+                .map(UserMapper::mapToBusiness)
+                .collect(Collectors.toList());
 
     }
 
@@ -53,4 +65,5 @@ public class UserDao {
         }
 
     }
+
 }

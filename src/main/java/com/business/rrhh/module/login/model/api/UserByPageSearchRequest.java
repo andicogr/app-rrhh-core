@@ -4,7 +4,7 @@ import com.business.rrhh.util.api.PageSearch;
 import lombok.Data;
 
 @Data
-public class UserSearchRequest extends PageSearch {
+public class UserByPageSearchRequest extends PageSearch {
 
     private String username;
 

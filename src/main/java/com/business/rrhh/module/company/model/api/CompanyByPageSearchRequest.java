@@ -4,7 +4,7 @@ import com.business.rrhh.util.api.PageSearch;
 import lombok.Data;
 
 @Data
-public class CompanySearchRequest extends PageSearch {
+public class CompanyByPageSearchRequest extends PageSearch {
 
     private String brandName;
 
