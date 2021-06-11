@@ -1,4 +1,4 @@
-package com.business.rrhh.util.api;
+package com.business.rrhh.util.model.api;
 
 import lombok.Data;
 import org.springframework.data.domain.PageRequest;

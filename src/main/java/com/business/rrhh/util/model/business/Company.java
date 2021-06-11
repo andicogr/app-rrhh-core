@@ -1,4 +1,4 @@
-package com.business.rrhh.module.login.model.business;
+package com.business.rrhh.util.model.business;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,5 +1,6 @@
 package com.business.rrhh.module.login.model.business;
 
+import com.business.rrhh.util.model.business.Company;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.business.rrhh.module.login.model.api;
+package com.business.rrhh.module.sunat.annex.two.model.api;
 
 import com.business.rrhh.util.model.api.CompanyRequest;
 import lombok.Data;
@@ -6,22 +6,24 @@ import lombok.Data;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Data
-public class UserRequest {
+public class Table3Request {
 
     @NotBlank
-    private String username;
+    private String code;
 
     @NotBlank
-    private String password;
+    private String sunatCode;
+
+    @NotBlank
+    private String description;
 
     @NotBlank
     private String status;
 
     @Valid
     @NotNull
-    private List<CompanyRequest> companies;
+    private CompanyRequest company;
 
 }

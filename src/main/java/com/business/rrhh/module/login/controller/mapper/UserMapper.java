@@ -1,8 +1,9 @@
 package com.business.rrhh.module.login.controller.mapper;
 
 import com.business.rrhh.module.login.model.api.*;
-import com.business.rrhh.module.login.model.business.Company;
 import com.business.rrhh.module.login.model.business.User;
+import com.business.rrhh.util.controller.mapper.CompanyMapper;
+import com.business.rrhh.util.model.business.Company;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,42 +14,22 @@ public class UserMapper {
 
     public static User mapToUser(Integer id, UserUpdateRequest userRequest) {
 
-        List<Company> companies = null;
-
-        if (Objects.nonNull(userRequest.getCompanies())) {
-
-            companies = userRequest.getCompanies().stream()
-                    .map(company -> Company.builder().id(company.getId()).build())
-                    .collect(Collectors.toList());
-
-        }
-
         return User.builder()
                 .id(id)
                 .password(userRequest.getPassword())
                 .status(userRequest.getStatus())
-                .companies(companies)
+                .companies(CompanyMapper.mapToCompany(userRequest.getCompanies()))
                 .build();
 
     }
 
     public static User mapToUser(UserRequest userRequest) {
 
-        List<Company> companies = null;
-
-        if (Objects.nonNull(userRequest.getCompanies())) {
-
-            companies = userRequest.getCompanies().stream()
-                    .map(company -> Company.builder().id(company.getId()).build())
-                    .collect(Collectors.toList());
-
-        }
-
         return User.builder()
                 .username(userRequest.getUsername())
                 .password(userRequest.getPassword())
                 .status(userRequest.getStatus())
-                .companies(companies)
+                .companies(CompanyMapper.mapToCompany(userRequest.getCompanies()))
                 .build();
 
     }
@@ -60,7 +41,7 @@ public class UserMapper {
         if (Objects.nonNull(userSearchRequest.getCompanyIds())) {
 
             companies = Arrays.stream(userSearchRequest.getCompanyIds())
-                    .map(id -> Company.builder().id(id).build())
+                    .map(CompanyMapper::mapToCompany)
                     .collect(Collectors.toList());
 
         }
@@ -84,36 +65,21 @@ public class UserMapper {
 
     public static UserResponse mapToResponse(User user) {
 
-        UserResponse userResponse = new UserResponse();
-
-        userResponse.setId(user.getId());
-        userResponse.setUsername(user.getUsername());
-        userResponse.setStatus(user.getStatus());
-
-        List<CompanyResponse> companyResponseList = user.getCompanies().stream()
-                .map(company -> {
-                    CompanyResponse companyResponse = new CompanyResponse();
-                    companyResponse.setId(company.getId());
-                    companyResponse.setBrandName(company.getBrandName());
-
-                    return companyResponse;
-                })
-                .collect(Collectors.toList());
-
-
-        userResponse.setCompanies(companyResponseList);
-
-        return userResponse;
+        return UserResponse.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .status(user.getStatus())
+                .companies(CompanyMapper.mapToResponse(user.getCompanies()))
+                .build();
 
     }
 
     public static UserResponse mapToIdResponse(User user) {
 
-        UserResponse userResponse = new UserResponse();
+        return UserResponse.builder()
+                .id(user.getId())
+                .build();
 
-        userResponse.setId(user.getId());
-
-        return userResponse;
 
     }
 
@@ -123,18 +89,7 @@ public class UserMapper {
         response.setId(user.getId());
         response.setUsername(user.getUsername());
         response.setStatus(user.getStatus());
-
-        List<CompanyResponse> companyResponseList = user.getCompanies().stream()
-                .map(company -> {
-                    CompanyResponse companyResponse = new CompanyResponse();
-                    companyResponse.setId(company.getId());
-                    companyResponse.setBrandName(company.getBrandName());
-
-                    return companyResponse;
-                })
-                .collect(Collectors.toList());
-
-        response.setCompanies(companyResponseList);
+        response.setCompanies(CompanyMapper.mapToResponse(user.getCompanies()));
 
         return response;
 

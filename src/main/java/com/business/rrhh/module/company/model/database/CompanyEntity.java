@@ -1,7 +1,7 @@
 package com.business.rrhh.module.company.model.database;
 
 import com.business.rrhh.module.login.model.database.UserEntity;
-import com.business.rrhh.util.database.AuditEntity;
+import com.business.rrhh.util.model.database.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

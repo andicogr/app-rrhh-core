@@ -1,5 +1,6 @@
 package com.business.rrhh.module.login.model.api;
 
+import com.business.rrhh.util.model.api.CompanyResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.business.rrhh.util.database;
+package com.business.rrhh.util.model.database;
 
 import lombok.Getter;
 import lombok.Setter;

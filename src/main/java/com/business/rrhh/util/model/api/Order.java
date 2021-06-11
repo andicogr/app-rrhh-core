@@ -1,4 +1,4 @@
-package com.business.rrhh.util.api;
+package com.business.rrhh.util.model.api;
 
 public enum Order {
 

@@ -1,6 +1,6 @@
 package com.business.rrhh.module.company.model.api;
 
-import com.business.rrhh.util.api.PageSearch;
+import com.business.rrhh.util.model.api.PageSearch;
 import lombok.Data;
 
 @Data
