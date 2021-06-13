@@ -2,6 +2,7 @@ package com.business.rrhh.module.employee.model.api;
 
 import com.business.rrhh.module.sunat.annex.two.model.api.Table3Response;
 import com.business.rrhh.util.model.api.CompanyResponse;
+import com.business.rrhh.util.model.api.StateResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class EmployeeResponse {
     private String paternalName;
     private String maternalName;
     private String fullName;
-    private String status;
+    private StateResponse state;
     private Table3Response documentType;
     private String documentNumber;
     private String email;

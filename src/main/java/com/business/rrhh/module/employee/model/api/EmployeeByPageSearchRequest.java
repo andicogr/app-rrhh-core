@@ -12,6 +12,7 @@ public class EmployeeByPageSearchRequest extends PageSearch {
     private String secondName;
     private String paternalName;
     private String maternalName;
+    private String state;
     private Integer companyId;
 
 }

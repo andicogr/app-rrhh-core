@@ -36,7 +36,8 @@ public class EmployeeEntity extends BaseCompanyEntity {
     @Column(length = 400)
     private String fullName;
 
-    private String status;
+    @Column(nullable = false)
+    private String state;
 
     @ManyToOne
     @JoinColumn(name = "document_type_id", nullable = false)
@@ -58,7 +59,7 @@ public class EmployeeEntity extends BaseCompanyEntity {
     private LocalDate bornDate;
 
     @Builder
-    public EmployeeEntity(CompanyEntity company, Integer id, String firstName, String secondName, String paternalName, String maternalName, String fullName, String status, Table3Entity documentType, String documentNumber, String email, String workPhone, String mobilePhone, LocalDate bornDate) {
+    public EmployeeEntity(CompanyEntity company, Integer id, String firstName, String secondName, String paternalName, String maternalName, String fullName, String state, Table3Entity documentType, String documentNumber, String email, String workPhone, String mobilePhone, LocalDate bornDate) {
         super(company);
         this.id = id;
         this.firstName = firstName;
@@ -66,7 +67,7 @@ public class EmployeeEntity extends BaseCompanyEntity {
         this.paternalName = paternalName;
         this.maternalName = maternalName;
         this.fullName = fullName;
-        this.status = status;
+        this.state = state;
         this.documentType = documentType;
         this.documentNumber = documentNumber;
         this.email = email;

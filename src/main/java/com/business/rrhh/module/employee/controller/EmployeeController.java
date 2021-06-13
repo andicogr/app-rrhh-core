@@ -5,6 +5,7 @@ import com.business.rrhh.module.employee.model.api.*;
 import com.business.rrhh.module.employee.model.business.Employee;
 import com.business.rrhh.module.employee.service.EmployeeService;
 import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.controller.mapper.StateMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -34,9 +35,9 @@ public class EmployeeController {
 
     @GetMapping
     @ResponseBody
-    public List<EmployeeSearchResponse> getAll(String status) {
+    public List<EmployeeSearchResponse> getAll(String state) {
 
-        Employee employee = Employee.builder().status(status).build();
+        Employee employee = Employee.builder().state(StateMapper.mapToState(state)).build();
 
         return service.getAll(employee).stream()
                 .map(EmployeeMapper::mapToResponseSearch)

@@ -31,9 +31,6 @@ public class EmployeeCreateRequest {
     @Size(max = 100)
     private String maternalName;
 
-    @NotBlank
-    private String status;
-
     @Valid
     @NotNull
     private Table3Request documentType;
