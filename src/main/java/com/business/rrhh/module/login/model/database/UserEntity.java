@@ -2,9 +2,7 @@ package com.business.rrhh.module.login.model.database;
 
 import com.business.rrhh.module.company.model.database.CompanyEntity;
 import com.business.rrhh.util.model.database.AuditEntity;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,6 +10,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class UserEntity extends AuditEntity {
@@ -37,19 +38,5 @@ public class UserEntity extends AuditEntity {
             inverseJoinColumns = {@JoinColumn(name = "company_id")}
     )
     private Set<CompanyEntity> companies;
-
-    @Builder
-    public UserEntity(Integer id, String username, String password, String status, Set<CompanyEntity> companies) {
-        super();
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.status = status;
-        this.companies = companies;
-    }
-
-    public UserEntity() {
-        super();
-    }
 
 }

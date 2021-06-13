@@ -1,8 +1,8 @@
 package com.business.rrhh.util.controller.mapper;
 
+import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.util.model.api.CompanyRequest;
 import com.business.rrhh.util.model.api.CompanyResponse;
-import com.business.rrhh.util.model.business.Company;
 
 import java.util.List;
 import java.util.Objects;

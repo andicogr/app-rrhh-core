@@ -1,15 +1,14 @@
 package com.business.rrhh.module.sunat.annex.two.service;
 
+import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.sunat.annex.two.dao.Table3Dao;
 import com.business.rrhh.module.sunat.annex.two.model.business.Table3;
-import com.business.rrhh.util.model.business.Company;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service

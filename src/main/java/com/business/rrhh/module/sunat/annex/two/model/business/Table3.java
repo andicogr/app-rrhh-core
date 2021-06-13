@@ -1,6 +1,6 @@
 package com.business.rrhh.module.sunat.annex.two.model.business;
 
-import com.business.rrhh.util.model.business.Company;
+import com.business.rrhh.module.company.model.business.Company;
 import lombok.Builder;
 import lombok.Data;
 
@@ -32,7 +32,7 @@ public class Table3 {
         } else {
 
             return Table3.builder()
-                    .code(this.code)
+                    .code("Clone ".concat(this.code))
                     .sunatCode("Clone ".concat(this.sunatCode))
                     .description("Clone ".concat(this.description))
                     .status(this.status)

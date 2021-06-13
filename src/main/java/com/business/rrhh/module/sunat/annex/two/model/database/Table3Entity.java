@@ -1,5 +1,6 @@
 package com.business.rrhh.module.sunat.annex.two.model.database;
 
+import com.business.rrhh.module.company.model.database.CompanyEntity;
 import com.business.rrhh.util.model.database.BaseCompanyEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,4 +31,16 @@ public class Table3Entity extends BaseCompanyEntity {
     @Column(length = 20, nullable = false)
     private String status;
 
+    public Table3Entity(CompanyEntity company, Integer id, String code, String sunatCode, String description, String status) {
+        super(company);
+        this.id = id;
+        this.code = code;
+        this.sunatCode = sunatCode;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Table3Entity() {
+        super(null);
+    }
 }

@@ -1,7 +1,7 @@
 package com.business.rrhh.util.dao.mapper;
 
+import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.model.database.CompanyEntity;
-import com.business.rrhh.util.model.business.Company;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +35,7 @@ public class CompanyMapper {
 
     }
 
-    public static Company mapToCompany(Integer companyId){
+    public static Company mapToCompany(Integer companyId) {
 
         return Company.builder()
                 .id(companyId)
@@ -43,7 +43,11 @@ public class CompanyMapper {
 
     }
 
-    public static Company mapToCompany(CompanyEntity companyEntity){
+    public static Company mapToCompany(CompanyEntity companyEntity) {
+
+        if (Objects.isNull(companyEntity)) {
+            return null;
+        }
 
         return Company.builder()
                 .id(companyEntity.getId())
@@ -52,7 +56,7 @@ public class CompanyMapper {
 
     }
 
-    public static List<Company> mapToCompany(Set<CompanyEntity> companyEntity){
+    public static List<Company> mapToCompany(Set<CompanyEntity> companyEntity) {
 
         if (Objects.isNull(companyEntity)) {
             return null;

@@ -4,12 +4,19 @@ import com.business.rrhh.module.sunat.annex.two.model.business.Table3;
 import com.business.rrhh.module.sunat.annex.two.model.database.Table3Entity;
 import com.business.rrhh.util.dao.mapper.CompanyMapper;
 
+import java.util.Objects;
+
 public class Table3Mapper {
 
     public static Table3Entity mapToEntity(Table3 table3) {
 
+        if (Objects.isNull(table3)) {
+            return null;
+        }
+
         Table3Entity table3Entity = new Table3Entity();
 
+        table3Entity.setId(table3.getId());
         table3Entity.setCode(table3.getCode());
         table3Entity.setSunatCode(table3.getSunatCode());
         table3Entity.setDescription(table3.getDescription());

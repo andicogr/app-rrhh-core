@@ -3,10 +3,6 @@ package com.business.rrhh.module.login.dao.mapper;
 import com.business.rrhh.module.login.model.business.User;
 import com.business.rrhh.module.login.model.database.UserEntity;
 import com.business.rrhh.util.dao.mapper.CompanyMapper;
-import com.business.rrhh.util.model.business.Company;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserMapper {
 

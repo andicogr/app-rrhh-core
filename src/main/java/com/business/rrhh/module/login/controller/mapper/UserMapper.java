@@ -1,9 +1,9 @@
 package com.business.rrhh.module.login.controller.mapper;
 
+import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.login.model.api.*;
 import com.business.rrhh.module.login.model.business.User;
 import com.business.rrhh.util.controller.mapper.CompanyMapper;
-import com.business.rrhh.util.model.business.Company;
 
 import java.util.Arrays;
 import java.util.List;
