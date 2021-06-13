@@ -1,9 +1,11 @@
 package com.business.rrhh.module.login.model.api;
 
 import com.business.rrhh.util.model.api.PageSearch;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class UserByPageSearchRequest extends PageSearch {
 
     private String username;

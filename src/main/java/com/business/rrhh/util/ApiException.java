@@ -1,13 +1,15 @@
 package com.business.rrhh.util;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Objects;
 
-@Data
+@Getter
+@Setter
 public class ApiException extends RuntimeException {
 
     private String code;

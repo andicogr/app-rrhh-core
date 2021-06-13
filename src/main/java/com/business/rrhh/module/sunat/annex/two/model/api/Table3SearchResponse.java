@@ -12,7 +12,7 @@ public class Table3SearchResponse {
     private String code;
     private String sunatCode;
     private String description;
-    private String status;
+    private Boolean active;
     private CompanyResponse company;
 
 }

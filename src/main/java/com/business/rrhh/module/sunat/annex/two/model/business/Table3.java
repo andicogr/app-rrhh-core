@@ -14,7 +14,7 @@ public class Table3 {
     private String code;
     private String sunatCode;
     private String description;
-    private String status;
+    private Boolean active;
     private Company company;
 
     public Table3 clone(Company company) {
@@ -25,7 +25,7 @@ public class Table3 {
                     .code(this.code)
                     .sunatCode(this.sunatCode)
                     .description(this.description)
-                    .status(this.status)
+                    .active(this.active)
                     .company(company)
                     .build();
 
@@ -35,7 +35,7 @@ public class Table3 {
                     .code("Clone ".concat(this.code))
                     .sunatCode("Clone ".concat(this.sunatCode))
                     .description("Clone ".concat(this.description))
-                    .status(this.status)
+                    .active(this.active)
                     .company(this.company)
                     .build();
 

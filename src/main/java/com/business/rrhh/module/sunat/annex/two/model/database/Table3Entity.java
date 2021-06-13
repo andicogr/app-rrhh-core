@@ -28,16 +28,15 @@ public class Table3Entity extends BaseCompanyEntity {
     @Column(length = 100, nullable = false)
     private String description;
 
-    @Column(length = 20, nullable = false)
-    private String status;
+    private Boolean active;
 
-    public Table3Entity(CompanyEntity company, Integer id, String code, String sunatCode, String description, String status) {
+    public Table3Entity(CompanyEntity company, Integer id, String code, String sunatCode, String description, Boolean active) {
         super(company);
         this.id = id;
         this.code = code;
         this.sunatCode = sunatCode;
         this.description = description;
-        this.status = status;
+        this.active = active;
     }
 
     public Table3Entity() {

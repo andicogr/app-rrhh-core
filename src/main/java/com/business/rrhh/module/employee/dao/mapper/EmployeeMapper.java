@@ -6,9 +6,13 @@ import com.business.rrhh.module.employee.state.EmployeeStates;
 import com.business.rrhh.module.sunat.annex.two.dao.mapper.Table3Mapper;
 import com.business.rrhh.util.dao.mapper.CompanyMapper;
 
+import static java.util.Objects.nonNull;
+
 public class EmployeeMapper {
 
     public static EmployeeEntity mapToEntity(Employee employee) {
+
+        String stateCode = nonNull(employee.getState()) ? employee.getState().getCode() : null;
 
         return EmployeeEntity.builder()
                 .id(employee.getId())
@@ -17,7 +21,7 @@ public class EmployeeMapper {
                 .paternalName(employee.getPaternalName())
                 .maternalName(employee.getMaternalName())
                 .fullName(employee.getFullName())
-                .state(employee.getState().getCode())
+                .state(stateCode)
                 .documentType(Table3Mapper.mapToEntity(employee.getDocumentType()))
                 .documentNumber(employee.getDocumentNumber())
                 .email(employee.getEmail())

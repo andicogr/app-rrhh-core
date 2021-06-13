@@ -20,7 +20,7 @@ public class Table3Mapper {
         table3Entity.setCode(table3.getCode());
         table3Entity.setSunatCode(table3.getSunatCode());
         table3Entity.setDescription(table3.getDescription());
-        table3Entity.setStatus(table3.getStatus());
+        table3Entity.setActive(table3.getActive());
         table3Entity.setCompany(CompanyMapper.mapToEntity(table3.getCompany()));
 
         return table3Entity;
@@ -34,7 +34,7 @@ public class Table3Mapper {
                 .code(entity.getCode())
                 .sunatCode(entity.getSunatCode())
                 .description(entity.getDescription())
-                .status(entity.getStatus())
+                .active(entity.getActive())
                 .company(CompanyMapper.mapToCompany(entity.getCompany()))
                 .build();
 

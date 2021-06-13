@@ -1,9 +1,11 @@
 package com.business.rrhh.module.company.model.api;
 
 import com.business.rrhh.util.model.api.PageSearch;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CompanyByPageSearchRequest extends PageSearch {
 
     private String brandName;

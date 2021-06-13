@@ -24,7 +24,7 @@ public class PageResponse<T> {
 
     private boolean last;
 
-    public static <T> PageResponse<T> of(Page page){
+    public static <T> PageResponse of(Page page){
 
         return PageResponse.<T>builder()
                 .content(page.getContent())

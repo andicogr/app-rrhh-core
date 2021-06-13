@@ -52,4 +52,12 @@ public class Table3Dao {
 
     }
 
+    public List<Table3> getAll(Table3 table3) {
+
+        return repository.findAll(Example.of(Table3Mapper.mapToEntity(table3)))
+                .stream()
+                .map(Table3Mapper::mapToBusiness)
+                .collect(Collectors.toList());
+
+    }
 }

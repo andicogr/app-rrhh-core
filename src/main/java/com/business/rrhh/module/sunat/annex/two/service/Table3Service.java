@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 @Service
 @AllArgsConstructor
@@ -32,4 +33,9 @@ public class Table3Service {
 
     }
 
+    public List<Table3> getAll(Table3 table3) {
+
+        return table3Dao.getAll(table3);
+
+    }
 }

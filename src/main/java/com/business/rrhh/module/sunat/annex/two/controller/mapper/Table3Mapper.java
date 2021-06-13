@@ -15,7 +15,7 @@ public class Table3Mapper {
                 .code(table3.getCode())
                 .sunatCode(table3.getSunatCode())
                 .description(table3.getDescription())
-                .status(table3.getStatus())
+                .active(table3.getActive())
                 .company(CompanyMapper.mapToResponse(table3.getCompany()))
                 .build();
     }
@@ -26,7 +26,7 @@ public class Table3Mapper {
                 .code(searchByPage.getCode())
                 .sunatCode(searchByPage.getSunatCode())
                 .description(searchByPage.getDescription())
-                .status(searchByPage.getStatus())
+                .active(searchByPage.getActive())
                 .company(CompanyMapper.mapToCompany(searchByPage.getCompanyId()))
                 .build();
 

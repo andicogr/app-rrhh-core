@@ -16,9 +16,9 @@ INSERT INTO public.user_company(
 	user_id, company_id)
 	VALUES (1, 1);
 
-INSERT INTO sunat_table_3(id, code, sunat_code, description, status, company_id, created_by, created) VALUES
-(nextval('hibernate_sequence'),'DNI','01','DOC. NACIONAL DE IDENTIDAD', 'ACTIVE', 1, 'admin', now()),
-(nextval('hibernate_sequence'),'CE','04','CARNÉ DE EXTRANJERÍA', 'ACTIVE', 1, 'admin', now()),
-(nextval('hibernate_sequence'),'RUC','06','REG. ÚNICO DE CONTRIBUYENTES (*)', 'ACTIVE', 1, 'admin', now()),
-(nextval('hibernate_sequence'),'PAS','07','PASAPORTE', 'ACTIVE', 1, 'admin', now()),
-(nextval('hibernate_sequence'),'PN','11','PARTIDA DE NACIMIENTO', 'ACTIVE', 1, 'admin', now());
+INSERT INTO sunat_table_3(id, code, sunat_code, description, active, company_id, created_by, created) VALUES
+(nextval('hibernate_sequence'),'DNI','01','DOC. NACIONAL DE IDENTIDAD', true, 1, 'admin', now()),
+(nextval('hibernate_sequence'),'CE','04','CARNÉ DE EXTRANJERÍA', true, 1, 'admin', now()),
+(nextval('hibernate_sequence'),'RUC','06','REG. ÚNICO DE CONTRIBUYENTES (*)', true, 1, 'admin', now()),
+(nextval('hibernate_sequence'),'PAS','07','PASAPORTE', true, 1, 'admin', now()),
+(nextval('hibernate_sequence'),'PN','11','PARTIDA DE NACIMIENTO', true, 1, 'admin', now());
