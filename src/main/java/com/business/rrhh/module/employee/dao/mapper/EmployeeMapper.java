@@ -42,7 +42,7 @@ public class EmployeeMapper {
                 .paternalName(entity.getPaternalName())
                 .maternalName(entity.getMaternalName())
                 .fullName(entity.getFullName())
-                .state(EmployeeStates.instance.getByCode(entity.getState()))
+                .state(EmployeeStates.getByCode(entity.getState()).buildState())
                 .documentType(Table3Mapper.mapToBusiness(entity.getDocumentType()))
                 .documentNumber(entity.getDocumentNumber())
                 .email(entity.getEmail())

@@ -1,4 +1,4 @@
-package com.business.rrhh.module.employee.state;
+package com.business.rrhh.module.salary.state;
 
 import com.business.rrhh.util.model.business.State;
 import lombok.Getter;
@@ -6,11 +6,11 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.stream.Stream;
 
-public enum EmployeeStates {
+public enum SalaryStates {
 
-    INACTIVE(1, "inactive", "Inactivo", true, false),
+    DRAFT(1, "draft", "Borrador", true, false),
     ACTIVE(2, "active", "Activo", false, false),
-    FINISH(3, "finish", "Liquidado", false, false);
+    FINISH(3, "finish", "Terminado", false, false);
 
     private final Integer order;
 
@@ -23,7 +23,7 @@ public enum EmployeeStates {
     private final boolean last;
 
 
-    EmployeeStates(Integer order, String code, String description, boolean first, boolean last) {
+    SalaryStates(Integer order, String code, String description, boolean first, boolean last) {
         this.order = order;
         this.code = code;
         this.description = description;
@@ -31,16 +31,16 @@ public enum EmployeeStates {
         this.last = last;
     }
 
-    public static final EmployeeStates getByCode(String code) {
+    public static final SalaryStates getByCode(String code) {
 
         if (StringUtils.isEmpty(code)) {
-            return EmployeeStates.INACTIVE;
+            return SalaryStates.DRAFT;
         }
 
-        return Stream.of(EmployeeStates.values())
+        return Stream.of(SalaryStates.values())
                 .filter(states -> states.getCode().equalsIgnoreCase(code))
                 .findFirst()
-                .orElse(EmployeeStates.INACTIVE);
+                .orElse(SalaryStates.DRAFT);
 
     }
 

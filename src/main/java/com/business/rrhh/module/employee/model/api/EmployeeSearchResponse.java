@@ -17,6 +17,7 @@ public class EmployeeSearchResponse {
     private String secondName;
     private String paternalName;
     private String maternalName;
+    private String fullName;
     private StateResponse state;
     private Table3Response documentType;
     private String documentNumber;

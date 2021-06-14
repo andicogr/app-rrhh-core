@@ -5,6 +5,7 @@ import com.business.rrhh.module.employee.error.EmployeeException;
 import com.business.rrhh.module.employee.model.business.Employee;
 import com.business.rrhh.module.employee.state.EmployeeStates;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.business.rrhh.util.UpdateObjects.requireNonNullElse;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @Service
 @AllArgsConstructor
@@ -40,7 +42,8 @@ public class EmployeeService {
 
         this.validateEmployee(employee);
 
-        employee.setState(EmployeeStates.instance.getFirstState());
+        employee.setState(EmployeeStates.ACTIVE.buildState());
+        employee.buildFullName();
 
         return employeeDao.save(employee);
 
@@ -55,6 +58,7 @@ public class EmployeeService {
         foundEmployee.setSecondName(requireNonNullElse(employee.getSecondName(), foundEmployee.getSecondName()));
         foundEmployee.setPaternalName(requireNonNullElse(employee.getPaternalName(), foundEmployee.getPaternalName()));
         foundEmployee.setMaternalName(requireNonNullElse(employee.getMaternalName(), foundEmployee.getMaternalName()));
+        foundEmployee.buildFullName();
         foundEmployee.setState(requireNonNullElse(employee.getState(), foundEmployee.getState()));
         foundEmployee.setDocumentType(requireNonNullElse(employee.getDocumentType(), foundEmployee.getDocumentType()));
         foundEmployee.setDocumentNumber(requireNonNullElse(employee.getDocumentNumber(), foundEmployee.getDocumentNumber()));

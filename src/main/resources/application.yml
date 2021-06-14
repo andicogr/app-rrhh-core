@@ -14,3 +14,18 @@ spring:
     url: jdbc:postgresql://localhost:5432/rrhh
     username: rrhh
     password: rrhh
+
+application:
+  config:
+    family-allowance:
+      percentage: 10
+      #type: EXTRA_TO_SALARY
+      type: CONTAINED_IN_SALARY
+    onp:
+      contribution: 10
+    essalud:
+      contribution: 9
+    eps:
+      contribution: 6.75
+    basic-salary:
+      amount: 930.00
