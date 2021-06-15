@@ -36,4 +36,11 @@ public class Salary {
         return this.state.getCode().equals(SalaryStates.FINISH.getCode());
     }
 
+    public boolean isBefore(Salary salary) {
+
+        return salary.getStartDate().isBefore(salary.getEndDate())
+                || salary.getStartDate().isEqual(salary.getEndDate());
+
+    }
+
 }

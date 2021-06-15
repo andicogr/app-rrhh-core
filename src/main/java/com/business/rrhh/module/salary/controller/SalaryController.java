@@ -80,4 +80,22 @@ public class SalaryController {
 
     }
 
+    @ResponseBody
+    @PatchMapping(value = "/{id}/activate")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void active(@PathVariable Integer id) {
+
+        service.activate(id);
+
+    }
+
+    @ResponseBody
+    @PatchMapping(value = "/{id}/finish")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void finish(@PathVariable Integer id) {
+
+        service.finish(id);
+
+    }
+
 }

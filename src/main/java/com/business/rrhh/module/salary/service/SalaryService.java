@@ -6,6 +6,7 @@ import com.business.rrhh.module.salary.dao.SalaryDao;
 import com.business.rrhh.module.salary.error.SalaryException;
 import com.business.rrhh.module.salary.model.business.Salary;
 import com.business.rrhh.module.salary.state.SalaryStates;
+import com.business.rrhh.util.DateUtil;
 import com.business.rrhh.util.FamilyAllowanceType;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 import static com.business.rrhh.util.UpdateObjects.requireNonNullElse;
 
@@ -115,6 +117,47 @@ public class SalaryService {
         }
 
         return salary.getAmount();
+
+    }
+
+    public void activate(Integer id) {
+
+        Salary salary = salaryDao.getById(id);
+
+        if (salaryDao.existsActiveSalaryByEmployee(salary.getEmployee())) {
+            throw SalaryException.ACTIVE_SALARY_BY_EMPLOYEE.build();
+        }
+
+        salaryDao.findLastValidSalary(salary.getEmployee())
+                .ifPresent(lastValidSalary -> {
+
+                    if (salary.isBefore(lastValidSalary)) {
+
+                        throw SalaryException.INVALID_DATE
+                                .descriptionParams(DateUtil.format(lastValidSalary.getEndDate()))
+                                .build();
+
+                    }
+
+                });
+
+        salary.setState(SalaryStates.ACTIVE.buildState());
+
+        salaryDao.save(salary);
+
+    }
+
+    public void finish(Integer id) {
+
+        Salary salary = salaryDao.getById(id);
+
+        if (Objects.isNull(salary.getEndDate())) {
+            throw SalaryException.END_DATE_REQUIRED.build();
+        }
+
+        salary.setState(SalaryStates.FINISH.buildState());
+
+        salaryDao.save(salary);
 
     }
 
