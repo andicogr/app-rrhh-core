@@ -14,9 +14,9 @@ public interface SalaryRepository extends JpaRepository<SalaryEntity, Integer> {
     boolean existsByEmployeeIdAndState(Integer id, String code);
 
     @Query("SELECT e " +
-            "FROM Salary e " +
+            "FROM SalaryEntity e " +
             "WHERE e.employee.id = :employeeId " +
-            "AND e.status not in :states " +
+            "AND e.state not in :states " +
             "ORDER BY e.startDate")
     List<Salary> findValidSalariesByEmployeeId(Integer employeeId, List<String> states);
 

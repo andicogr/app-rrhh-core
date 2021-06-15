@@ -54,6 +54,7 @@ public class EmployeeService {
         this.validateEmployee(employee);
 
         Employee foundEmployee = employeeDao.getById(employee.getId());
+
         foundEmployee.setFirstName(requireNonNullElse(employee.getFirstName(), foundEmployee.getFirstName()));
         foundEmployee.setSecondName(requireNonNullElse(employee.getSecondName(), foundEmployee.getSecondName()));
         foundEmployee.setPaternalName(requireNonNullElse(employee.getPaternalName(), foundEmployee.getPaternalName()));

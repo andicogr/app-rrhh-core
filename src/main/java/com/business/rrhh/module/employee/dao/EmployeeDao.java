@@ -80,7 +80,8 @@ public class EmployeeDao {
                 entity.getDocumentType().getId(),
                 entity.getDocumentNumber(),
                 entity.getCompany().getId()
-        ).map(EmployeeMapper::mapToBusiness);
+        )
+                .map(EmployeeMapper::mapToBusiness);
 
     }
 
