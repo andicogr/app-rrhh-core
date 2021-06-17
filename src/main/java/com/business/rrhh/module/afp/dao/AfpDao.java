@@ -22,7 +22,6 @@ public class AfpDao {
 
     public Page<Afp> getByPage(Afp afp, Pageable pageable) {
 
-
         return repository.findAll(Example.of(AfpMapper.mapToEntity(afp)), pageable)
                 .map(AfpMapper::mapToBusiness);
 
