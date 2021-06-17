@@ -6,7 +6,7 @@ import com.business.rrhh.module.workschedule.model.api.*;
 import com.business.rrhh.module.workschedule.model.business.WorkSchedule;
 import com.business.rrhh.module.workschedule.service.WorkScheduleDetailService;
 import com.business.rrhh.module.workschedule.service.WorkScheduleService;
-import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.model.api.PageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

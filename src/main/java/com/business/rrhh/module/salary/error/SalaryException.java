@@ -1,7 +1,7 @@
 package com.business.rrhh.module.salary.error;
 
 import com.business.rrhh.module.salary.state.SalaryStates;
-import com.business.rrhh.util.ApiException;
+import com.business.rrhh.util.exception.ApiException;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;

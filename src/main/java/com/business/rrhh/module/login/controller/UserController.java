@@ -4,7 +4,7 @@ import com.business.rrhh.module.login.controller.mapper.UserMapper;
 import com.business.rrhh.module.login.model.api.*;
 import com.business.rrhh.module.login.model.business.User;
 import com.business.rrhh.module.login.service.UserService;
-import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.model.api.PageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

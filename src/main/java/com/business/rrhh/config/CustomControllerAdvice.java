@@ -1,7 +1,7 @@
 package com.business.rrhh.config;
 
-import com.business.rrhh.util.ApiException;
-import com.business.rrhh.util.ExceptionDetail;
+import com.business.rrhh.util.exception.ApiException;
+import com.business.rrhh.util.exception.ExceptionDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.DataException;

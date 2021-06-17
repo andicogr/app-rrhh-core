@@ -1,6 +1,6 @@
 package com.business.rrhh.module.afp.error;
 
-import com.business.rrhh.util.ApiException;
+import com.business.rrhh.util.exception.ApiException;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;

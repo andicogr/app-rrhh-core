@@ -6,7 +6,7 @@ import com.business.rrhh.module.sunat.annex.two.model.api.Table3CloneRequest;
 import com.business.rrhh.module.sunat.annex.two.model.api.Table3SearchResponse;
 import com.business.rrhh.module.sunat.annex.two.model.business.Table3;
 import com.business.rrhh.module.sunat.annex.two.service.Table3Service;
-import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.model.api.PageResponse;
 import com.business.rrhh.util.controller.mapper.CompanyMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

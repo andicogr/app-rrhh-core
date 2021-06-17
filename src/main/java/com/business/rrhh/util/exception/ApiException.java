@@ -1,4 +1,4 @@
-package com.business.rrhh.util;
+package com.business.rrhh.util.exception;
 
 import lombok.Builder;
 import lombok.Getter;

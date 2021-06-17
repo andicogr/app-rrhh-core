@@ -4,7 +4,7 @@ import com.business.rrhh.module.company.controller.mapper.CompanyMapper;
 import com.business.rrhh.module.company.model.api.*;
 import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.service.CompanyService;
-import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.model.api.PageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

@@ -6,7 +6,7 @@ import com.business.rrhh.module.afp.model.api.*;
 import com.business.rrhh.module.afp.model.business.Afp;
 import com.business.rrhh.module.afp.service.AfpCommissionService;
 import com.business.rrhh.module.afp.service.AfpService;
-import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.model.api.PageResponse;
 import com.business.rrhh.util.model.api.PageSearch;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

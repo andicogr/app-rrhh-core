@@ -1,4 +1,4 @@
-package com.business.rrhh.util;
+package com.business.rrhh.util.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

@@ -4,7 +4,7 @@ import com.business.rrhh.module.salary.controller.mapper.SalaryMapper;
 import com.business.rrhh.module.salary.model.api.*;
 import com.business.rrhh.module.salary.model.business.Salary;
 import com.business.rrhh.module.salary.service.SalaryService;
-import com.business.rrhh.util.PageResponse;
+import com.business.rrhh.util.model.api.PageResponse;
 import com.business.rrhh.util.controller.mapper.StateMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
