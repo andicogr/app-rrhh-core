@@ -14,7 +14,7 @@ public class SalaryMapper {
 
         EmployeeEntity employeeEntity = nonNull(salary.getEmployee()) ? EmployeeMapper.mapToEntity(salary.getEmployee()) : null;
 
-        String statusCode = nonNull(salary.getState()) ? salary.getState().getCode() : null;
+        String stateCode = nonNull(salary.getState()) ? salary.getState().getCode() : null;
 
         return SalaryEntity.builder()
                 .id(salary.getId())
@@ -24,7 +24,7 @@ public class SalaryMapper {
                 .familyAllowance(salary.getFamilyAllowance())
                 .startDate(salary.getStartDate())
                 .endDate(salary.getEndDate())
-                .state(statusCode)
+                .state(stateCode)
                 .company(CompanyMapper.mapToEntity(salary.getCompany()))
                 .build();
 
