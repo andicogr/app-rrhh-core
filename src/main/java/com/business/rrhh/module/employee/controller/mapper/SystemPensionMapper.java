@@ -49,7 +49,7 @@ public class SystemPensionMapper {
 
     }
 
-    public static SystemPension mapToEmployee(Integer employeeId, SystemPensionUpdateRequest updateRequest) {
+    public static SystemPension mapToBusiness(Integer employeeId, SystemPensionUpdateRequest updateRequest) {
 
         Afp afp = null;
 

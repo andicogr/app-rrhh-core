@@ -41,7 +41,7 @@ public class SystemPensionController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Integer employeeId, @RequestBody @Valid SystemPensionUpdateRequest updateRequest) {
 
-        service.update(SystemPensionMapper.mapToEmployee(employeeId, updateRequest));
+        service.update(SystemPensionMapper.mapToBusiness(employeeId, updateRequest));
 
     }
 
