@@ -1,4 +1,4 @@
-package com.business.rrhh.module.employee.model.api;
+package com.business.rrhh.module.employee.model.api.employee;
 
 import com.business.rrhh.module.sunat.annex.two.model.api.Table3Response;
 import com.business.rrhh.util.model.api.CompanyResponse;
@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmployeeResponse {
+public class EmployeeSearchResponse {
 
     private Integer id;
     private String firstName;
@@ -23,9 +21,6 @@ public class EmployeeResponse {
     private StateResponse state;
     private Table3Response documentType;
     private String documentNumber;
-    private String email;
-    private String workPhone;
-    private String mobilePhone;
-    private LocalDate bornDate;
     private CompanyResponse company;
+
 }

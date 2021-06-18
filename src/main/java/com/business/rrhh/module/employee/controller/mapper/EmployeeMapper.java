@@ -1,6 +1,6 @@
 package com.business.rrhh.module.employee.controller.mapper;
 
-import com.business.rrhh.module.employee.model.api.*;
+import com.business.rrhh.module.employee.model.api.employee.*;
 import com.business.rrhh.module.employee.model.business.Employee;
 import com.business.rrhh.module.sunat.annex.two.model.business.Table3;
 import com.business.rrhh.util.controller.mapper.CompanyMapper;

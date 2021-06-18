@@ -1,7 +1,7 @@
 package com.business.rrhh.module.employee.controller;
 
 import com.business.rrhh.module.employee.controller.mapper.EmployeeMapper;
-import com.business.rrhh.module.employee.model.api.*;
+import com.business.rrhh.module.employee.model.api.employee.*;
 import com.business.rrhh.module.employee.model.business.Employee;
 import com.business.rrhh.module.employee.service.EmployeeService;
 import com.business.rrhh.util.model.api.PageResponse;

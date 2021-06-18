@@ -1,4 +1,4 @@
-package com.business.rrhh.module.employee.model.api;
+package com.business.rrhh.module.employee.model.api.employee;
 
 import lombok.Data;
 

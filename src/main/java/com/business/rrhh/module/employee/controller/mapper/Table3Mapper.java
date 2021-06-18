@@ -1,6 +1,6 @@
 package com.business.rrhh.module.employee.controller.mapper;
 
-import com.business.rrhh.module.employee.model.api.Table3Request;
+import com.business.rrhh.module.employee.model.api.employee.Table3Request;
 import com.business.rrhh.module.sunat.annex.two.model.api.Table3Response;
 import com.business.rrhh.module.sunat.annex.two.model.business.Table3;
 

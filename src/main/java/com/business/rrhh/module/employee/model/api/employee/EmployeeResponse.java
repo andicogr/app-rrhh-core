@@ -1,16 +1,21 @@
-package com.business.rrhh.module.employee.model.api;
+package com.business.rrhh.module.employee.model.api.employee;
 
 import com.business.rrhh.module.sunat.annex.two.model.api.Table3Response;
 import com.business.rrhh.util.model.api.CompanyResponse;
 import com.business.rrhh.util.model.api.StateResponse;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import lombok.Builder;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmployeeSearchResponse {
+public class EmployeeResponse {
 
     private Integer id;
     private String firstName;
@@ -21,6 +26,11 @@ public class EmployeeSearchResponse {
     private StateResponse state;
     private Table3Response documentType;
     private String documentNumber;
+    private String email;
+    private String workPhone;
+    private String mobilePhone;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate bornDate;
     private CompanyResponse company;
-
 }
