@@ -29,7 +29,7 @@ public class UserEntity extends AuditEntity {
     private String password;
 
     @Column(length = 20, nullable = false)
-    private String status;
+    private String state;
 
     @ManyToMany
     @JoinTable(

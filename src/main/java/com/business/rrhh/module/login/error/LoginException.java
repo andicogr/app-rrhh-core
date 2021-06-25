@@ -24,7 +24,11 @@ public enum LoginException {
 
     public ApiException build(){
 
-        return this.build(null);
+        return ApiException.builder()
+                .code(this.code)
+                .description(this.description)
+                .status(this.status)
+                .build();
 
     }
 

@@ -11,7 +11,7 @@ public class StateMapper {
 
     }
 
-    public static State mapToState(String code){
+    public static State mapToState(String code) {
 
         return State.builder().code(code).build();
 

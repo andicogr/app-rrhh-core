@@ -2,6 +2,7 @@ package com.business.rrhh.module.login.dao.mapper;
 
 import com.business.rrhh.module.login.model.business.User;
 import com.business.rrhh.module.login.model.database.UserEntity;
+import com.business.rrhh.module.login.state.UserStates;
 import com.business.rrhh.util.dao.mapper.CompanyMapper;
 
 public class UserMapper {
@@ -12,7 +13,7 @@ public class UserMapper {
                 .id(entity.getId())
                 .username(entity.getUsername())
                 .password(entity.getPassword())
-                .status(entity.getStatus())
+                .state(UserStates.getByCode(entity.getState()).buildState())
                 .companies(CompanyMapper.mapToCompany(entity.getCompanies()))
                 .build();
 
@@ -20,12 +21,11 @@ public class UserMapper {
 
     public static UserEntity mapToEntity(User user) {
 
-
         return UserEntity.builder()
                 .id(user.getId())
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .status(user.getStatus())
+                .state(user.getState() != null ? user.getState().getCode() : null)
                 .companies(CompanyMapper.mapToEntity(user.getCompanies()))
                 .build();
 

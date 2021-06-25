@@ -74,9 +74,17 @@ public class UserDao {
 
     }
 
-    public boolean isUsernameAlreadyInUse(String username){
+    public boolean isUsernameAlreadyInUse(String username) {
 
         return repository.existsByUsername(username);
+
+    }
+
+    public User getByUsername(String username) {
+
+        return repository.findByUsername(username)
+                .map(UserMapper::mapToBusiness)
+                .orElseThrow(LoginException.USER_NOT_FOUND::build);
 
     }
 

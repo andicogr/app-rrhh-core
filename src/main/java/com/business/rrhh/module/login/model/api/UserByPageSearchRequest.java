@@ -10,7 +10,7 @@ public class UserByPageSearchRequest extends PageSearch {
 
     private String username;
 
-    private String status;
+    private String state;
 
     private Integer[] companyIds;
 

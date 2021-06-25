@@ -7,15 +7,18 @@ import com.business.rrhh.util.UpdateObjects;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
 public class UserService {
 
     private UserDao userDao;
+    private PasswordEncoder passwordEncoder;
 
     public Page<User> getByPage(User userSearch, Pageable page) {
 
@@ -41,6 +44,8 @@ public class UserService {
             throw LoginException.INVALID_USER_CREATION.build(detail);
         }
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userDao.save(user);
 
     }
@@ -48,8 +53,12 @@ public class UserService {
     public User updateById(User user) {
 
         User currentUser = userDao.getById(user.getId());
-        currentUser.setPassword(UpdateObjects.requireNonNullElse(user.getPassword(), currentUser.getPassword()));
-        currentUser.setStatus(UpdateObjects.requireNonNullElse(user.getStatus(), currentUser.getStatus()));
+
+        if (Objects.nonNull(user.getPassword())) {
+            currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+
+        currentUser.setState(UpdateObjects.requireNonNullElse(user.getState(), currentUser.getState()));
         currentUser.setCompanies(UpdateObjects.requireNonNullElse(user.getCompanies(), currentUser.getCompanies()));
 
         return userDao.save(currentUser);
@@ -59,6 +68,12 @@ public class UserService {
     public void deleteById(Integer id) {
 
         userDao.deleteById(id);
+
+    }
+
+    public User getByUsername(String username) {
+
+        return userDao.getByUsername(username);
 
     }
 
