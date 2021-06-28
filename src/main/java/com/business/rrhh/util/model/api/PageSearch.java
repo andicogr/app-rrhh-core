@@ -28,7 +28,7 @@ public class PageSearch {
 
     public PageRequest buildPageable() {
 
-        Sort sort = Sort.unsorted();
+        Sort sort = Sort.by(new Sort.Order(Sort.DEFAULT_DIRECTION ,"id"));
 
         if (Objects.nonNull(this.sort)) {
 
