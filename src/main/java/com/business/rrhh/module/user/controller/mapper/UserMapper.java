@@ -6,9 +6,11 @@ import com.business.rrhh.module.user.model.business.User;
 import com.business.rrhh.module.user.state.UserStates;
 import com.business.rrhh.util.controller.mapper.CompanyMapper;
 import com.business.rrhh.util.controller.mapper.StateMapper;
+import com.business.rrhh.util.model.api.CompanyResponse;
 import com.business.rrhh.util.model.business.State;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -97,7 +99,12 @@ public class UserMapper {
         response.setId(user.getId());
         response.setUsername(user.getUsername());
         response.setState(StateMapper.mapToResponse(user.getState()));
-        response.setCompanies(CompanyMapper.mapToResponse(user.getCompanies()));
+        response.setCompanies(
+                CompanyMapper.mapToResponse(user.getCompanies())
+                        .stream()
+                        .sorted(Comparator.comparing(CompanyResponse::getBrandName))
+                        .collect(Collectors.toList())
+        );
 
         return response;
 
