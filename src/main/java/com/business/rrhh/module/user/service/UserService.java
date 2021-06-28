@@ -1,8 +1,8 @@
-package com.business.rrhh.module.login.service;
+package com.business.rrhh.module.user.service;
 
-import com.business.rrhh.module.login.dao.UserDao;
-import com.business.rrhh.module.login.error.LoginException;
-import com.business.rrhh.module.login.model.business.User;
+import com.business.rrhh.module.user.dao.UserDao;
+import com.business.rrhh.module.user.error.UserException;
+import com.business.rrhh.module.user.model.business.User;
 import com.business.rrhh.util.UpdateObjects;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -41,7 +41,7 @@ public class UserService {
 
         if (userDao.isUsernameAlreadyInUse(user.getUsername())) {
             String detail = "El nombre de usuario ya existe";
-            throw LoginException.INVALID_USER_CREATION.build(detail);
+            throw UserException.INVALID_USER_CREATION.build(detail);
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

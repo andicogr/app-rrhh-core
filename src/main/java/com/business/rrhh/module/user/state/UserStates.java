@@ -1,4 +1,4 @@
-package com.business.rrhh.module.login.state;
+package com.business.rrhh.module.user.state;
 
 import com.business.rrhh.util.model.business.State;
 import lombok.Getter;

@@ -1,10 +1,10 @@
-package com.business.rrhh.module.login.controller;
+package com.business.rrhh.module.user.controller;
 
-import com.business.rrhh.module.login.controller.mapper.UserMapper;
-import com.business.rrhh.module.login.model.api.*;
-import com.business.rrhh.module.login.model.business.User;
-import com.business.rrhh.module.login.service.UserService;
-import com.business.rrhh.module.login.state.UserStates;
+import com.business.rrhh.module.user.controller.mapper.UserMapper;
+import com.business.rrhh.module.user.model.api.*;
+import com.business.rrhh.module.user.model.business.User;
+import com.business.rrhh.module.user.service.UserService;
+import com.business.rrhh.module.user.state.UserStates;
 import com.business.rrhh.util.model.api.PageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

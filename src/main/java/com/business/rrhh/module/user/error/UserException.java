@@ -1,22 +1,21 @@
-package com.business.rrhh.module.login.error;
+package com.business.rrhh.module.user.error;
 
 import com.business.rrhh.util.exception.ApiException;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
 
-public enum LoginException {
+public enum UserException {
 
-    BAD_CREDENTIALS("0001", "Usuario y/o contraseña incorrectos", HttpStatus.BAD_REQUEST),
-    USER_NOT_FOUND("0002", "No se encontró el usuario", HttpStatus.NOT_FOUND),
-    INVALID_USER_CREATION("0003","Datos invalidos", HttpStatus.NOT_FOUND);
+    USER_NOT_FOUND("0001", "No se encontró el usuario", HttpStatus.NOT_FOUND),
+    INVALID_USER_CREATION("0002","Datos invalidos", HttpStatus.NOT_FOUND);
 
     private String code;
     private String description;
     private HttpStatus status;
 
-    LoginException(String code, String description, HttpStatus status) {
-        this.code = "LOGIN-".concat(code);
+    UserException(String code, String description, HttpStatus status) {
+        this.code = "USER-".concat(code);
         this.description = description;
         this.status = status;
 

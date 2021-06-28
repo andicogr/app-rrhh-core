@@ -1,9 +1,9 @@
-package com.business.rrhh.module.login.controller.mapper;
+package com.business.rrhh.module.user.controller.mapper;
 
 import com.business.rrhh.module.company.model.business.Company;
-import com.business.rrhh.module.login.model.api.*;
-import com.business.rrhh.module.login.model.business.User;
-import com.business.rrhh.module.login.state.UserStates;
+import com.business.rrhh.module.user.model.api.*;
+import com.business.rrhh.module.user.model.business.User;
+import com.business.rrhh.module.user.state.UserStates;
 import com.business.rrhh.util.controller.mapper.CompanyMapper;
 import com.business.rrhh.util.controller.mapper.StateMapper;
 import com.business.rrhh.util.model.business.State;
@@ -66,15 +66,6 @@ public class UserMapper {
                 .username(userSearchRequest.getUsername())
                 .state(state)
                 .companies(companies)
-                .build();
-
-    }
-
-    public static User mapToUser(LoginRequest loginRequest) {
-
-        return User.builder()
-                .username(loginRequest.getUsername())
-                .password(loginRequest.getPassword())
                 .build();
 
     }

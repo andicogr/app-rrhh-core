@@ -1,6 +1,6 @@
-package com.business.rrhh.module.login.dao.repository;
+package com.business.rrhh.module.user.dao.repository;
 
-import com.business.rrhh.module.login.model.database.UserEntity;
+import com.business.rrhh.module.user.model.database.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

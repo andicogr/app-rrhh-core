@@ -1,9 +1,9 @@
-package com.business.rrhh.module.login.dao;
+package com.business.rrhh.module.user.dao;
 
-import com.business.rrhh.module.login.dao.mapper.UserMapper;
-import com.business.rrhh.module.login.dao.repository.UserRepository;
-import com.business.rrhh.module.login.error.LoginException;
-import com.business.rrhh.module.login.model.business.User;
+import com.business.rrhh.module.user.dao.mapper.UserMapper;
+import com.business.rrhh.module.user.dao.repository.UserRepository;
+import com.business.rrhh.module.user.error.UserException;
+import com.business.rrhh.module.user.model.business.User;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -47,7 +47,7 @@ public class UserDao {
 
         return repository.findById(id)
                 .map(UserMapper::mapToBusiness)
-                .orElseThrow(() -> LoginException.USER_NOT_FOUND.build());
+                .orElseThrow(() -> UserException.USER_NOT_FOUND.build());
 
     }
 
@@ -84,7 +84,7 @@ public class UserDao {
 
         return repository.findByUsername(username)
                 .map(UserMapper::mapToBusiness)
-                .orElseThrow(LoginException.USER_NOT_FOUND::build);
+                .orElseThrow(UserException.USER_NOT_FOUND::build);
 
     }
 

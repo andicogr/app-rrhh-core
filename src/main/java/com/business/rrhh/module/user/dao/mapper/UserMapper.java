@@ -1,8 +1,8 @@
-package com.business.rrhh.module.login.dao.mapper;
+package com.business.rrhh.module.user.dao.mapper;
 
-import com.business.rrhh.module.login.model.business.User;
-import com.business.rrhh.module.login.model.database.UserEntity;
-import com.business.rrhh.module.login.state.UserStates;
+import com.business.rrhh.module.user.model.business.User;
+import com.business.rrhh.module.user.model.database.UserEntity;
+import com.business.rrhh.module.user.state.UserStates;
 import com.business.rrhh.util.dao.mapper.CompanyMapper;
 
 public class UserMapper {

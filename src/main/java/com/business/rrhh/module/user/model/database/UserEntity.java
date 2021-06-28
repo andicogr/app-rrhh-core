@@ -1,4 +1,4 @@
-package com.business.rrhh.module.login.model.database;
+package com.business.rrhh.module.user.model.database;
 
 import com.business.rrhh.module.company.model.database.CompanyEntity;
 import com.business.rrhh.util.model.database.AuditEntity;

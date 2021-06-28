@@ -1,4 +1,4 @@
-package com.business.rrhh.module.login.model.api;
+package com.business.rrhh.module.user.model.api;
 
 import com.business.rrhh.util.model.api.PageSearch;
 import lombok.Getter;
