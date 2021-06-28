@@ -7,6 +7,7 @@ import com.business.rrhh.module.company.service.CompanyService;
 import com.business.rrhh.util.model.api.PageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class CompanyController {
     private CompanyService companyService;
 
     @ResponseBody
-    @GetMapping(params = {"page"})
+    @GetMapping(params = {"page"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public PageResponse<CompanyResponseSearch> getByPage(@Valid CompanyByPageSearchRequest companySearchRequest) {
 
         return PageResponse.of(
@@ -32,8 +33,8 @@ public class CompanyController {
 
     }
 
-    @GetMapping
     @ResponseBody
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CompanyResponseSearch> getAll(String status) {
 
         Company company = Company.builder().status(status).build();
@@ -45,15 +46,16 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public CompanyResponse getById(@PathVariable Integer id) {
 
         return CompanyMapper.mapToResponse(companyService.getById(id));
 
     }
 
-    @PostMapping
+
     @ResponseBody
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public CompanyResponse create(@RequestBody @Valid CompanyRequest companyRequest){
 
         return CompanyMapper.mapToResponse(companyService.save(CompanyMapper.mapToCompany(companyRequest)));
@@ -61,7 +63,7 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @PatchMapping(value = "/{id}")
+    @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public CompanyResponse update(@PathVariable Integer id, @RequestBody @Valid CompanyUpdateRequest companyUpdateRequest) {
 
         return CompanyMapper.mapToResponse(companyService.updateById(CompanyMapper.mapToCompany(id, companyUpdateRequest)));
@@ -69,8 +71,8 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable Integer id) {
 
         companyService.deleteById(id);

@@ -12,6 +12,8 @@ import java.util.List;
 @Setter
 public class UserUpdateRequest {
 
+    private String username;
+
     private String password;
 
     @Valid

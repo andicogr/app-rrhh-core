@@ -16,11 +16,11 @@ import java.util.List;
 public class UserCreateRequest {
 
     @NotBlank
-    @Size(min = 6, max = 20)
+    @Size(min = 5, max = 20)
     private String username;
 
     @NotBlank
-    @Size(min = 6, max = 50)
+    @Size(min = 5, max = 50)
     private String password;
 
     @Valid

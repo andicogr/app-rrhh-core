@@ -17,7 +17,7 @@ public class UserResponse {
     private String username;
     private String password;
     private StateResponse state;
-    private boolean active;
+    private Boolean active;
     private List<CompanyResponse> companies;
 
 }

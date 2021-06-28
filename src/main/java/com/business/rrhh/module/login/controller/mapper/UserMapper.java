@@ -25,6 +25,7 @@ public class UserMapper {
 
         return User.builder()
                 .id(id)
+                .username(userRequest.getUsername())
                 .password(userRequest.getPassword())
                 .state(state)
                 .companies(CompanyMapper.mapToCompany(userRequest.getCompanies()))

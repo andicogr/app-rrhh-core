@@ -58,6 +58,7 @@ public class UserService {
             currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
         }
 
+        currentUser.setUsername(UpdateObjects.requireNonNullElse(user.getUsername(), currentUser.getUsername()));
         currentUser.setState(UpdateObjects.requireNonNullElse(user.getState(), currentUser.getState()));
         currentUser.setCompanies(UpdateObjects.requireNonNullElse(user.getCompanies(), currentUser.getCompanies()));
 

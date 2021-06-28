@@ -34,8 +34,8 @@ public class UserController {
 
     }
 
-    @GetMapping
     @ResponseBody
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserSearchResponse> getAll(String state) {
 
         User user = User.builder().state(UserStates.getByCode(state).buildState()).build();
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse getById(@PathVariable Integer id) {
 
         return UserMapper.mapToResponse(userService.getById(id));
@@ -55,16 +55,16 @@ public class UserController {
     }
 
     @ResponseBody
-    @GetMapping(value = "/username/{username}")
+    @GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse getByUsername(@PathVariable String username) {
 
         return UserMapper.mapToResponse(userService.getByUsername(username));
 
     }
 
-    @PostMapping
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse create(@RequestBody @Valid UserCreateRequest userRequest) {
 
         return UserMapper.mapToIdResponse(userService.save(UserMapper.mapToUser(userRequest)));
@@ -72,8 +72,8 @@ public class UserController {
     }
 
     @ResponseBody
-    @PatchMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void update(@PathVariable Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) {
 
         userService.updateById(UserMapper.mapToUser(id, userUpdateRequest));
@@ -81,8 +81,8 @@ public class UserController {
     }
 
     @ResponseBody
-    @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable Integer id) {
 
         userService.deleteById(id);
