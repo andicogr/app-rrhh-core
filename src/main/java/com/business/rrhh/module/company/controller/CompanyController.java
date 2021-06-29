@@ -5,6 +5,7 @@ import com.business.rrhh.module.company.model.api.*;
 import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.service.CompanyService;
 import com.business.rrhh.module.company.state.CompanyStates;
+import com.business.rrhh.module.user.model.api.ValidateUsername;
 import com.business.rrhh.util.model.api.PageResponse;
 import com.business.rrhh.util.model.business.State;
 import lombok.AllArgsConstructor;
@@ -84,6 +85,15 @@ public class CompanyController {
     public void delete(@PathVariable Integer id) {
 
         companyService.deleteById(id);
+
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/validate-username")
+    public boolean validateUsername(@RequestBody @Valid ValidateUsername validateUsername) {
+
+        //return userService.validateUsername(validateUsername.getExcludeUserId(), validateUsername.getUsername());
+        return false;
 
     }
 

@@ -4,7 +4,6 @@ import com.business.rrhh.module.company.dao.CompanyDao;
 import com.business.rrhh.module.company.error.CompanyException;
 import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.state.CompanyStates;
-import com.business.rrhh.util.UpdateObjects;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -51,11 +50,11 @@ public class CompanyService {
         Company currentCompany = companyDao.getById(company.getId());
 
         Company updatedCompany = currentCompany.mutate()
-                .phone(UpdateObjects.requireNonNullElse(company.getPhone(), currentCompany.getPhone()))
-                .brandName(UpdateObjects.requireNonNullElse(company.getBrandName(), currentCompany.getBrandName()))
-                .address(UpdateObjects.requireNonNullElse(company.getAddress(), currentCompany.getAddress()))
-                .email(UpdateObjects.requireNonNullElse(company.getEmail(), currentCompany.getEmail()))
-                .ruc(UpdateObjects.requireNonNullElse(company.getRuc(), currentCompany.getRuc()))
+                .phone(company.getPhone())
+                .brandName(company.getBrandName())
+                .address(company.getAddress())
+                .email(company.getEmail())
+                .ruc(company.getRuc())
                 .build();
 
         return companyDao.update(updatedCompany);
