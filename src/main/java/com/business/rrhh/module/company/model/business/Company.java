@@ -1,5 +1,6 @@
 package com.business.rrhh.module.company.model.business;
 
+import com.business.rrhh.module.company.state.CompanyStates;
 import com.business.rrhh.util.model.business.State;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,6 +28,10 @@ public class Company {
                 .address(this.address)
                 .phone(this.phone);
 
+    }
+
+    public boolean isActive() {
+        return this.state.getCode().equals(CompanyStates.ACTIVE.getCode());
     }
 
 }

@@ -56,7 +56,7 @@ public class CompanyController {
 
 
     @ResponseBody
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     public CompanyResponse create(@RequestBody @Valid CompanyCreateRequest companyRequest) {
 
         return CompanyMapper.mapToResponse(companyService.save(CompanyMapper.mapToCompany(companyRequest)));
@@ -64,7 +64,7 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{id}")
     public CompanyResponse update(@PathVariable Integer id, @RequestBody @Valid CompanyUpdateRequest companyUpdateRequest) {
 
         return CompanyMapper.mapToResponse(companyService.updateById(CompanyMapper.mapToCompany(id, companyUpdateRequest)));

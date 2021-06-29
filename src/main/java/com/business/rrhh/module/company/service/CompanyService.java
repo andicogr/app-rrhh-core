@@ -1,6 +1,7 @@
 package com.business.rrhh.module.company.service;
 
 import com.business.rrhh.module.company.dao.CompanyDao;
+import com.business.rrhh.module.company.error.CompanyException;
 import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.state.CompanyStates;
 import com.business.rrhh.util.UpdateObjects;
@@ -10,8 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.DoubleStream;
 
 @Service
 @AllArgsConstructor
@@ -64,6 +63,12 @@ public class CompanyService {
     }
 
     public void deleteById(Integer id) {
+
+        Company company = companyDao.getById(id);
+
+        if (company.isActive()) {
+            throw CompanyException.CANT_DELETE_ACTIVE_STATE.build();
+        }
 
         companyDao.deleteById(id);
 
