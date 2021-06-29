@@ -2,11 +2,11 @@ package com.business.rrhh.module.user.dao;
 
 import com.business.rrhh.module.user.dao.mapper.UserMapper;
 import com.business.rrhh.module.user.dao.repository.UserRepository;
+import com.business.rrhh.module.user.dao.specification.UserEntitySpecification;
 import com.business.rrhh.module.user.error.UserException;
 import com.business.rrhh.module.user.model.business.User;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -14,8 +14,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
 @Repository
 @AllArgsConstructor
@@ -25,11 +23,7 @@ public class UserDao {
 
     public Page<User> getByPage(User user, Pageable pageable) {
 
-        ExampleMatcher matcher = ExampleMatcher
-                .matchingAll()
-                .withMatcher("username", contains().ignoreCase());
-
-        return repository.findAll(Example.of(UserMapper.mapToEntity(user), matcher), pageable)
+        return repository.findAll(UserEntitySpecification.of(UserMapper.mapToEntity(user)).build(), pageable)
                 .map(UserMapper::mapToBusiness);
 
     }
