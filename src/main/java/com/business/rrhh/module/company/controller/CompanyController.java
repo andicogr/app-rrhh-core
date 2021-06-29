@@ -6,6 +6,7 @@ import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.service.CompanyService;
 import com.business.rrhh.module.company.state.CompanyStates;
 import com.business.rrhh.util.model.api.PageResponse;
+import com.business.rrhh.util.model.business.State;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -38,7 +40,12 @@ public class CompanyController {
     @GetMapping
     public List<CompanyResponseSearch> getAll(String state) {
 
-        Company company = Company.builder().state(CompanyStates.getByCode(state).buildState()).build();
+        State companyState = null;
+        if (Objects.nonNull(state)) {
+            companyState = CompanyStates.getByCode(state).buildState();
+        }
+
+        Company company = Company.builder().state(companyState).build();
 
         return companyService.getAll(company).stream()
                 .map(CompanyMapper::mapToResponseSearch)
