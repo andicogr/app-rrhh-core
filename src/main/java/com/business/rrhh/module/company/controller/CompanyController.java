@@ -4,6 +4,7 @@ import com.business.rrhh.module.company.controller.mapper.CompanyMapper;
 import com.business.rrhh.module.company.model.api.*;
 import com.business.rrhh.module.company.model.business.Company;
 import com.business.rrhh.module.company.service.CompanyService;
+import com.business.rrhh.module.company.state.CompanyStates;
 import com.business.rrhh.util.model.api.PageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,10 +35,10 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CompanyResponseSearch> getAll(String status) {
+    @GetMapping
+    public List<CompanyResponseSearch> getAll(String state) {
 
-        Company company = Company.builder().status(status).build();
+        Company company = Company.builder().state(CompanyStates.getByCode(state).buildState()).build();
 
         return companyService.getAll(company).stream()
                 .map(CompanyMapper::mapToResponseSearch)
@@ -56,7 +57,7 @@ public class CompanyController {
 
     @ResponseBody
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public CompanyResponse create(@RequestBody @Valid CompanyRequest companyRequest){
+    public CompanyResponse create(@RequestBody @Valid CompanyCreateRequest companyRequest) {
 
         return CompanyMapper.mapToResponse(companyService.save(CompanyMapper.mapToCompany(companyRequest)));
 

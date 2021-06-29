@@ -2,6 +2,7 @@ package com.business.rrhh.module.company.dao.mapper;
 
 import com.business.rrhh.module.company.model.database.CompanyEntity;
 import com.business.rrhh.module.company.model.business.Company;
+import com.business.rrhh.module.company.state.CompanyStates;
 
 public class CompanyMapper {
 
@@ -10,7 +11,7 @@ public class CompanyMapper {
         return CompanyEntity.builder()
                 .id(company.getId())
                 .brandName(company.getBrandName())
-                .status(company.getStatus())
+                .state(company.getState() != null ? company.getState().getCode() : null)
                 .address(company.getAddress())
                 .email(company.getEmail())
                 .ruc(company.getRuc())
@@ -24,7 +25,7 @@ public class CompanyMapper {
         return Company.builder()
                 .id(companyEntity.getId())
                 .brandName(companyEntity.getBrandName())
-                .status(companyEntity.getStatus())
+                .state(CompanyStates.getByCode(companyEntity.getState()).buildState())
                 .address(companyEntity.getAddress())
                 .email(companyEntity.getEmail())
                 .ruc(companyEntity.getRuc())

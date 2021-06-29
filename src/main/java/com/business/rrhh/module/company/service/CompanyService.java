@@ -2,6 +2,7 @@ package com.business.rrhh.module.company.service;
 
 import com.business.rrhh.module.company.dao.CompanyDao;
 import com.business.rrhh.module.company.model.business.Company;
+import com.business.rrhh.module.company.state.CompanyStates;
 import com.business.rrhh.util.UpdateObjects;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -37,6 +38,10 @@ public class CompanyService {
     }
 
     public Company save(Company company) {
+
+        company = company.mutate()
+                .state(CompanyStates.ACTIVE.buildState())
+                .build();
 
         return companyDao.save(company);
 

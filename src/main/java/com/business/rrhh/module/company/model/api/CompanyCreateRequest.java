@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
-public class CompanyRequest {
+public class CompanyCreateRequest {
 
     @NotBlank
     @Size(max = 200)
@@ -29,8 +29,5 @@ public class CompanyRequest {
     @Email
     @Size(max = 64)
     private String email;
-
-    @NotBlank
-    private String status;
 
 }

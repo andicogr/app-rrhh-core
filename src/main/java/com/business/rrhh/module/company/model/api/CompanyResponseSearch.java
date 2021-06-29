@@ -1,5 +1,6 @@
 package com.business.rrhh.module.company.model.api;
 
+import com.business.rrhh.util.model.api.StateResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -11,6 +12,6 @@ public class CompanyResponseSearch {
     private String brandName;
     private String ruc;
     private String address;
-    private String status;
+    private StateResponse state;
 
 }

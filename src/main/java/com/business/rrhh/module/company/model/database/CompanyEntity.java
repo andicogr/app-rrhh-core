@@ -37,7 +37,7 @@ public class CompanyEntity extends AuditEntity {
     @Column(length = 64)
     private String email;
 
-    private String status;
+    private String state;
 
     @ManyToMany(mappedBy = "companies")
     private Set<UserEntity> users;

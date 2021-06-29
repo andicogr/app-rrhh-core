@@ -2,24 +2,34 @@ package com.business.rrhh.module.company.controller.mapper;
 
 import com.business.rrhh.module.company.model.api.*;
 import com.business.rrhh.module.company.model.business.Company;
+import com.business.rrhh.module.company.state.CompanyStates;
+import com.business.rrhh.util.controller.mapper.StateMapper;
+import com.business.rrhh.util.model.business.State;
+
+import java.util.Objects;
 
 public class CompanyMapper {
 
     public static Company mapToCompany(CompanyByPageSearchRequest companySearchRequest) {
 
+        State state = null;
+
+        if (Objects.nonNull(companySearchRequest.getState())) {
+            state = CompanyStates.getByCode(companySearchRequest.getState()).buildState();
+        }
+
         return Company.builder()
                 .brandName(companySearchRequest.getBrandName())
-                .status(companySearchRequest.getStatus())
+                .state(state)
                 .ruc(companySearchRequest.getRuc())
                 .build();
 
     }
 
-    public static Company mapToCompany(CompanyRequest companyRequest) {
+    public static Company mapToCompany(CompanyCreateRequest companyRequest) {
 
         return Company.builder()
                 .brandName(companyRequest.getBrandName())
-                .status(companyRequest.getStatus())
                 .ruc(companyRequest.getRuc())
                 .phone(companyRequest.getPhone())
                 .address(companyRequest.getAddress())
@@ -35,7 +45,7 @@ public class CompanyMapper {
         responseSearch.setAddress(company.getAddress());
         responseSearch.setRuc(company.getRuc());
         responseSearch.setBrandName(company.getBrandName());
-        responseSearch.setStatus(company.getStatus());
+        responseSearch.setState(StateMapper.mapToResponse(company.getState()));
 
         return responseSearch;
 
@@ -48,7 +58,7 @@ public class CompanyMapper {
         companyResponse.setAddress(company.getAddress());
         companyResponse.setBrandName(company.getBrandName());
         companyResponse.setRuc(company.getRuc());
-        companyResponse.setStatus(company.getStatus());
+        companyResponse.setState(StateMapper.mapToResponse(company.getState()));
         companyResponse.setPhone(company.getPhone());
         companyResponse.setEmail(company.getEmail());
 

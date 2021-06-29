@@ -12,6 +12,6 @@ public class CompanyByPageSearchRequest extends PageSearch {
 
     private String ruc;
 
-    private String status;
+    private String state;
 
 }

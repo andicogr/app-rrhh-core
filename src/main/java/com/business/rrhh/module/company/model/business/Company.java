@@ -1,5 +1,6 @@
 package com.business.rrhh.module.company.model.business;
 
+import com.business.rrhh.util.model.business.State;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,7 +11,7 @@ public class Company {
     private Integer id;
     private String brandName;
     private String ruc;
-    private String status;
+    private State state;
     private String email;
     private String address;
     private String phone;
@@ -21,7 +22,7 @@ public class Company {
                 .id(this.id)
                 .brandName(this.brandName)
                 .ruc(this.ruc)
-                .status(this.status)
+                .state(this.state)
                 .email(this.email)
                 .address(this.address)
                 .phone(this.phone);
