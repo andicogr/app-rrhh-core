@@ -78,4 +78,9 @@ public class UserService {
 
     }
 
+    public boolean validateUsername(Integer excludeUserId, String username) {
+
+        return userDao.isUniqueByUsername(excludeUserId, username);
+
+    }
 }

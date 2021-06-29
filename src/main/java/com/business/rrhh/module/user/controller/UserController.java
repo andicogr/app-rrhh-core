@@ -89,4 +89,12 @@ public class UserController {
 
     }
 
+    @ResponseBody
+    @PostMapping(value = "/validate-username")
+    public boolean validateUsername(@RequestBody @Valid ValidateUsername validateUsername) {
+
+        return userService.validateUsername(validateUsername.getExcludeUserId(), validateUsername.getUsername());
+
+    }
+
 }

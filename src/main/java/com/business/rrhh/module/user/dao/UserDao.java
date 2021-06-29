@@ -82,4 +82,10 @@ public class UserDao {
 
     }
 
+    public boolean isUniqueByUsername(Integer excludeId, String username) {
+
+        return !repository.existsByIdNotAndUsername(excludeId, username);
+
+    }
+
 }
