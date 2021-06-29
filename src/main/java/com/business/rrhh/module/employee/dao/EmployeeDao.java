@@ -77,7 +77,7 @@ public class EmployeeDao {
         EmployeeEntity entity = EmployeeMapper.mapToEntity(employee);
 
         return repository.findByDocumentTypeAndNumber(
-                entity.getDocumentType().getId(),
+                entity.getDocumentType(),
                 entity.getDocumentNumber(),
                 entity.getCompany().getId()
         )

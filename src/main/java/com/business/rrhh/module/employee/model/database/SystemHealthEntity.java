@@ -26,6 +26,8 @@ public class SystemHealthEntity extends AuditEntity {
     @JoinColumn(name = "employee_id", nullable = false)
     private EmployeeEntity employee;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private SystemHealthType type;
 
     @Column(nullable = false)

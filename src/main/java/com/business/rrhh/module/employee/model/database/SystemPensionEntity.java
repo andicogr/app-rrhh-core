@@ -28,6 +28,8 @@ public class SystemPensionEntity extends AuditEntity {
     @JoinColumn(name = "employee_id", nullable = false)
     private EmployeeEntity employee;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private SystemPensionType type;
 
     @Column(nullable = false)

@@ -3,7 +3,6 @@ package com.business.rrhh.module.employee.dao.mapper;
 import com.business.rrhh.module.employee.model.business.Employee;
 import com.business.rrhh.module.employee.model.database.EmployeeEntity;
 import com.business.rrhh.module.employee.state.EmployeeStates;
-import com.business.rrhh.module.sunat.annex.two.dao.mapper.Table3Mapper;
 import com.business.rrhh.util.dao.mapper.CompanyMapper;
 
 import static java.util.Objects.nonNull;
@@ -22,7 +21,7 @@ public class EmployeeMapper {
                 .maternalName(employee.getMaternalName())
                 .fullName(employee.getFullName())
                 .state(stateCode)
-                .documentType(Table3Mapper.mapToEntity(employee.getDocumentType()))
+                .documentType(employee.getDocumentType())
                 .documentNumber(employee.getDocumentNumber())
                 .email(employee.getEmail())
                 .workPhone(employee.getWorkPhone())
@@ -43,7 +42,7 @@ public class EmployeeMapper {
                 .maternalName(entity.getMaternalName())
                 .fullName(entity.getFullName())
                 .state(EmployeeStates.getByCode(entity.getState()).buildState())
-                .documentType(Table3Mapper.mapToBusiness(entity.getDocumentType()))
+                .documentType(entity.getDocumentType())
                 .documentNumber(entity.getDocumentNumber())
                 .email(entity.getEmail())
                 .workPhone(entity.getWorkPhone())

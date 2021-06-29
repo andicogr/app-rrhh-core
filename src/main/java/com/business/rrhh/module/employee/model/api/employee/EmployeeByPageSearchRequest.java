@@ -1,5 +1,6 @@
 package com.business.rrhh.module.employee.model.api.employee;
 
+import com.business.rrhh.util.DocType;
 import com.business.rrhh.util.model.api.PageSearch;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class EmployeeByPageSearchRequest extends PageSearch {
 
-    private String documentType;
+    private DocType documentType;
     private String documentNumber;
     private String firstName;
     private String secondName;

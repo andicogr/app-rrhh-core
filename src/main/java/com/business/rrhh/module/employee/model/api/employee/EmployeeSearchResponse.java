@@ -1,6 +1,6 @@
 package com.business.rrhh.module.employee.model.api.employee;
 
-import com.business.rrhh.module.sunat.annex.two.model.api.Table3Response;
+import com.business.rrhh.util.DocType;
 import com.business.rrhh.util.model.api.CompanyResponse;
 import com.business.rrhh.util.model.api.StateResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,7 +19,7 @@ public class EmployeeSearchResponse {
     private String maternalName;
     private String fullName;
     private StateResponse state;
-    private Table3Response documentType;
+    private DocType documentType;
     private String documentNumber;
     private CompanyResponse company;
 

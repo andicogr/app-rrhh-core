@@ -1,16 +1,16 @@
 INSERT INTO public.company(
-	id, created, created_by, modified, modified_by, address, brand_name, email, phone, ruc, status)
+	id, created, created_by, modified, modified_by, address, brand_name, email, phone, ruc, state)
 	VALUES (1, now(), 'admin', null, null, 'Mz T, Lt 14 Presidencia de la Republica',
-			'Andres Gonzales S.A.C', 'agonzalesr93@gmail.com', '+51 956 291 034', '10476240307', 'ACTIVE');
+			'Andres Gonzales S.A.C', 'agonzalesr93@gmail.com', '+51 956 291 034', '10476240307', 'active');
 
 INSERT INTO public.company(
-	id, created, created_by, modified, modified_by, address, brand_name, email, phone, ruc, status)
+	id, created, created_by, modified, modified_by, address, brand_name, email, phone, ruc, state)
 	VALUES (2, now(), 'admin', null, null, 'Mz T, Lt 14 Presidencia de la Republica',
-			'Jeico Manuel S.A.C', 'agonzalesr93@gmail.com', '+51 956 291 034', '1014255807', 'ACTIVE');
+			'Jeico Manuel S.A.C', 'agonzalesr93@gmail.com', '+51 956 291 034', '1014255807', 'active');
 
 INSERT INTO public.users(
-	id, created, created_by, modified, modified_by, password, status, username)
-	VALUES (1, now(), 'admin', null, null, 'admin', 'ACTIVE', 'admin');
+	id, created, created_by, modified, modified_by, password, state, username)
+	VALUES (1, now(), 'admin', null, null, '$2a$10$DoRHxotcRg8CDSy2l1eMce08kqgJ6j.2MgN8ZdRmaSfaqVzDPei5S', 'active', 'admin');
 
 INSERT INTO public.user_company(
 	user_id, company_id)

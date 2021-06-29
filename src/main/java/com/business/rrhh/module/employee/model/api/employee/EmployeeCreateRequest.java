@@ -1,5 +1,6 @@
 package com.business.rrhh.module.employee.model.api.employee;
 
+import com.business.rrhh.util.DocType;
 import com.business.rrhh.util.model.api.CompanyRequest;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -33,7 +34,7 @@ public class EmployeeCreateRequest {
 
     @Valid
     @NotNull
-    private Table3Request documentType;
+    private DocType documentType;
 
     @NotBlank
     @Size(max = 15)

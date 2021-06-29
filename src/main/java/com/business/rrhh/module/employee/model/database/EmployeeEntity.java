@@ -2,8 +2,11 @@ package com.business.rrhh.module.employee.model.database;
 
 import com.business.rrhh.module.company.model.database.CompanyEntity;
 import com.business.rrhh.module.sunat.annex.two.model.database.Table3Entity;
+import com.business.rrhh.util.DocType;
 import com.business.rrhh.util.model.database.BaseCompanyEntity;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -39,9 +42,9 @@ public class EmployeeEntity extends BaseCompanyEntity {
     @Column(nullable = false)
     private String state;
 
-    @ManyToOne
-    @JoinColumn(name = "document_type_id", nullable = false)
-    private Table3Entity documentType;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private DocType documentType;
 
     @Column(nullable = false, length = 15)
     private String documentNumber;
@@ -59,7 +62,7 @@ public class EmployeeEntity extends BaseCompanyEntity {
     private LocalDate bornDate;
 
     @Builder
-    public EmployeeEntity(CompanyEntity company, Integer id, String firstName, String secondName, String paternalName, String maternalName, String fullName, String state, Table3Entity documentType, String documentNumber, String email, String workPhone, String mobilePhone, LocalDate bornDate) {
+    public EmployeeEntity(CompanyEntity company, Integer id, String firstName, String secondName, String paternalName, String maternalName, String fullName, String state, DocType documentType, String documentNumber, String email, String workPhone, String mobilePhone, LocalDate bornDate) {
         super(company);
         this.id = id;
         this.firstName = firstName;

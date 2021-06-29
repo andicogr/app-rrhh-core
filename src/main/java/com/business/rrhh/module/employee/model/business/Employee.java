@@ -1,7 +1,7 @@
 package com.business.rrhh.module.employee.model.business;
 
 import com.business.rrhh.module.company.model.business.Company;
-import com.business.rrhh.module.sunat.annex.two.model.business.Table3;
+import com.business.rrhh.util.DocType;
 import com.business.rrhh.util.model.business.State;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class Employee {
     private String maternalName;
     private String fullName;
     private State state;
-    private Table3 documentType;
+    private DocType documentType;
     private String documentNumber;
     private String email;
     private String workPhone;
