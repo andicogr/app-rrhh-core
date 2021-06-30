@@ -89,11 +89,19 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/validate-username")
-    public boolean validateUsername(@RequestBody @Valid ValidateUsername validateUsername) {
+    @PostMapping(value = "/validate-unique-brand-name")
+    public boolean validateUniqueBrandName(@RequestBody @Valid ValidateUniqueBrandName uniqueBrandName) {
 
-        //return userService.validateUsername(validateUsername.getExcludeUserId(), validateUsername.getUsername());
-        return false;
+        return companyService.validateUniqueBrandName(uniqueBrandName.getExcludeId(), uniqueBrandName.getBrandName());
+
+
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/validate-unique-ruc")
+    public boolean validateUniqueRuc(@RequestBody @Valid ValidateUniqueRuc uniqueRuc) {
+
+        return companyService.validateUniqueRuc(uniqueRuc.getExcludeId(), uniqueRuc.getRuc());
 
     }
 

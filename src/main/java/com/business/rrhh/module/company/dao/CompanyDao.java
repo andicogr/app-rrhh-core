@@ -73,4 +73,15 @@ public class CompanyDao {
 
     }
 
+    public boolean isUniqueBrandName(Integer excludeId, String brandName) {
+
+        return !repository.existsByIdNotAndBrandNameIgnoreCase(excludeId, brandName);
+
+    }
+
+    public boolean isUniqueRuc(Integer excludeId, String ruc) {
+
+        return !repository.existsByIdNotAndRucIgnoreCase(excludeId, ruc);
+
+    }
 }

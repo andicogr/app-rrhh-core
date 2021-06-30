@@ -73,4 +73,15 @@ public class CompanyService {
 
     }
 
+    public boolean validateUniqueBrandName(Integer excludeId, String brandName) {
+
+        return companyDao.isUniqueBrandName(excludeId, brandName);
+
+    }
+
+    public boolean validateUniqueRuc(Integer excludeId, String ruc) {
+
+        return companyDao.isUniqueRuc(excludeId, ruc);
+
+    }
 }

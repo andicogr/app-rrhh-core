@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CompanyRepository extends JpaRepository<CompanyEntity, Integer> {
 
+    boolean existsByIdNotAndRucIgnoreCase(Integer excludeId, String ruc);
+
+    boolean existsByIdNotAndBrandNameIgnoreCase(Integer excludeId, String brandName);
 }
